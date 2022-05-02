@@ -35,7 +35,8 @@
       		<div class="row">
 
           <div class="container">
-          <form method="POST" action="saveUploadImg.php">
+            <!-- Nested form tag not needed -->
+          <!-- <form method="POST" action="saveUploadImg.php"> -->
         <div class="row pakainfo">
             <div class="col-md-6 pakainfo">
                 <div id="live_camera"></div>
@@ -53,7 +54,7 @@
       
             </div>
         </div>
-    </form>
+    <!-- </form> -->
 </div>
     			<div class="col-xs-4">
           			
@@ -122,7 +123,6 @@ $(function() {
       }
     });
   });
-    
 });
 </script>
 </body>

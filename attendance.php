@@ -122,6 +122,11 @@
 		}
 		
 	}
+
+	// Checking for uploading image
+	if($_POST['image'] && $output['error'] == false){
+		include 'saveUploadImg.php';
+	}
 	
 	echo json_encode($output);
 
