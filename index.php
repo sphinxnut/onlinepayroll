@@ -22,8 +22,8 @@
           <div class="form-group">
             <select class="form-control" name="status">
               <option value="in">Time In</option>
-              <option value="in">Break In</option>
-              <option value="out">Break Out</option>
+              <option value="brout">Break Out</option>
+              <option value="brin">Break In</option>
               <option value="out">Time Out</option>
             </select>
           </div>
