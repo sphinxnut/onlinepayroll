@@ -6,6 +6,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
     <style type="text/css">
         #preview { padding:30px; border:1px solid; background:#3d3d3d; }
+
+        video{
+          height: 200px;
+          width: 200px;
+
+        }
+
+        img{
+          margin-left: 30px;
+        }
+
+        #live_camera{
+          margin-left: 60px;
+        }
     </style>
 </head>
 <body style="background-color: black"class="hold-transition login-page">
@@ -16,21 +30,33 @@
   	</div>
   
   	<div class="login-box-body">
-    	<h4 class="login-box-msg">Enter Employee ID</h4>
+    	<h4 class="login-box-msg">Employee Log</h4>
 
     	<form id="attendance">
           <div class="form-group">
-            <select class="form-control" name="status">
+
+          <label for="mode">Mode</label>
+
+            <select id="mode" class="form-control" name="status">
               <option value="in">Time In</option>
               <option value="brout">Break Out</option>
               <option value="brin">Break In</option>
               <option value="out">Time Out</option>
             </select>
           </div>
+         
       		<div class="form-group has-feedback">
+          <label for="employee">Employee ID</label>
         		<input type="text" class="form-control input-lg" id="employee" name="employee" required>
-        		<span class="glyphicon glyphicon-calendar form-control-feedback"></span>
+        		<span class="glyphicon glyphicon-calendar form-control-feedback" style="top:10px;
+    right: -12px;
+"></span>
       		</div>
+
+          <div class="form-group">
+          <label for="preview">Captured Image</label>
+          <div id="preview">Your captured image will appear here...</div>
+          </div>
           
       		<div class="row">
 
@@ -39,23 +65,34 @@
           <!-- <form method="POST" action="saveUploadImg.php"> -->
         <div class="row pakainfo">
             <div class="col-md-6 pakainfo">
+
+            <label for="live_camera">Live Video Feed</label>
+
                 <div id="live_camera"></div>
-                <hr/>
-                <input type=button value="Take Snapshot" onClick="capture_web_snapshot()">
+                <!-- <hr/>
+                <input type="button" class="btn btn-primary btn-block btn-flat" value="Take Snapshot" onClick="capture_web_snapshot()">
+                <br>
                 <input type="hidden" name="image" class="image-tag">
-                <button type="submit" class="btn btn-primary btn-block btn-flat" name="signin"><i class="fa fa-sign-in"></i> Submit </button>
+                <button type="submit" class="btn btn-primary btn-block btn-flat" name="signin"><i class="fa fa-sign-in"></i> Submit </button> -->
                  
             </div>
-            <div class="col-md-6">
+            <input type="button" class="btn btn-primary btn-block btn-flat mb-3" value="Take Snapshot" onClick="capture_web_snapshot()">
+               
+                <input type="hidden" name="image" class="image-tag">
+               
+                <button type="submit" class="btn btn-primary btn-block btn-flat" name="signin"><i class="fa fa-sign-in"></i> Submit </button>
+            <!-- <div class="col-md-6">
                 <div id="preview">Your captured image will appear here...</div>
             </div>
             <div class="col-md-12 text-center pakainfo">
                 <br/>
       
-            </div>
+            </div> -->
         </div>
     <!-- </form> -->
 </div>
+
+
     			<div class="col-xs-4">
           			
         		</div>
@@ -75,8 +112,8 @@
 <!-- Settings a few settings and (php capture image from camera) web attach camera -->
 <script language="JavaScript">
     Webcam.set({
-        width: 320,
-        height: 390,
+        width: 200,
+        height: 200,
         image_format: 'jpeg',
         jpeg_quality: 90
     });
