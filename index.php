@@ -66,7 +66,7 @@
         <div class="row pakainfo">
             <div class="col-md-6 pakainfo">
 
-            <label for="live_camera">Live Video Feed</label>
+            <label for="live_camera">Live Camera Feed</label>
 
                 <div id="live_camera"></div>
                 <!-- <hr/>
@@ -156,6 +156,8 @@ $(function() {
           $('.alert-success').show();
           $('.message').html(response.message);
           $('#employee').val('');
+          document.getElementById('preview').innerHTML = '<div>Capture new image...</div> ';
+
         }
       }
     });
