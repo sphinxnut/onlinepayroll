@@ -13,6 +13,7 @@
 			$row = $query->fetch_assoc();
 			$oldsched_id = $row['schedule_id'];
 
+			// Check if new schedule_id is selected
 			if($newsched_id != $oldsched_id){
 				$sql = "UPDATE employees SET schedule_id = '$newsched_id' ,schedule_updated_on = NOW() WHERE id = '$empid'";
 
