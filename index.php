@@ -156,8 +156,8 @@ $(function() {
           $('.alert-success').show();
           $('.message').html(response.message);
           $('#employee').val('');
+          $(".image-tag").val(null);
           document.getElementById('preview').innerHTML = '<div>Capture new image...</div> ';
-
         }
       }
     });
