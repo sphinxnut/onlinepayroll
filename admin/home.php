@@ -88,7 +88,7 @@
               
                 $early = $query->num_rows;
                 
-                
+                // Update Check if both value return 0
                 if($early == $total){
                   $percentage = 0;
                 }else{
