@@ -8,6 +8,7 @@
 
 		$query = $conn->query($sql);
 		$total = 0;
+        // Updated Added schedule_updated_on for starting date of schedule
 		while($row = $query->fetch_assoc()){
 			$contents .= "
 			<tr>
