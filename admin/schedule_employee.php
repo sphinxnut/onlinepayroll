@@ -59,7 +59,7 @@
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT *, employees.id AS empid FROM employees LEFT JOIN schedules ON schedules.id=employees.schedule_id";
+                    $sql = "SELECT *, employees.id AS empid FROM employees LEFT JOIN schedules ON schedules.id=employees.schedule_id ORDER BY employees.updated_on DESC";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       echo "
