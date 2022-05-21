@@ -3,8 +3,8 @@
 
 	function generateRow($conn){
 		$contents = '';
-		
-		$sql = "SELECT *, employees.id AS empid FROM employees LEFT JOIN schedules ON schedules.id=employees.schedule_id";
+        $last = "NOW()";
+        $sql = "SELECT *, employees.id AS empid FROM employees LEFT JOIN schedules ON schedules.id=employees.schedule_id";
 
 		$query = $conn->query($sql);
 		$total = 0;
@@ -14,6 +14,9 @@
 				<td>".$row['lastname'].", ".$row['firstname']."</td>
 				<td>".$row['employee_id']."</td>
 				<td>".date('h:i A', strtotime($row['time_in'])).' - '. date('h:i A', strtotime($row['time_out']))."</td>
+                <td>".date('M d, Y', strtotime($row['schedule_updated_on']))."</td>
+                
+
 			</tr>
 			";
 		}
@@ -36,15 +39,20 @@
     $pdf->SetAutoPageBreak(TRUE, 10);  
     $pdf->SetFont('helvetica', '', 11);  
     $pdf->AddPage();  
+    // <p align="center"><small>Issued on: '.date('M d, Y', strtotime($currentDate)).'</small></p>
+
+    $currentDate =  date_create('now')->format('Y-m-d H:i:s');
     $content = '';  
     $content .= '
       	<h2 align="center">Jollibee Sto. Tomas Subic</h2>
       	<h4 align="center">Employee Schedule</h4>
+
       	<table border="1" cellspacing="0" cellpadding="3">  
            <tr>  
-           		<th width="40%" align="center"><b>Employee Name</b></th>
-                <th width="30%" align="center"><b>Employee ID</b></th>
-				<th width="30%" align="center"><b>Schedule</b></th> 
+           		<th width="30%" align="center"><b>Employee Name</b></th>
+                <th width="25%" align="center"><b>Employee ID</b></th>
+				<th width="25%" align="center"><b>Schedule</b></th> 
+                <th width="20%" align="center"><b>Date</b></th> 
            </tr>  
       ';  
     $content .= generateRow($conn); 
