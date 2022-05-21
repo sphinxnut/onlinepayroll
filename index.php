@@ -156,6 +156,8 @@ $(function() {
           $('.alert-success').show();
           $('.message').html(response.message);
           $('#employee').val('');
+
+          // Update refresh image input holder and preview
           $(".image-tag").val(null);
           document.getElementById('preview').innerHTML = '<div>Capture new image...</div> ';
         }
