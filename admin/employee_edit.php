@@ -32,7 +32,7 @@
 				}
 			}
 
-			// Proceeds here if schedule does not changed
+			// Proceeds here if schedule_id does not changed
 
 			else{
 				$sql = "UPDATE employees SET firstname = '$firstname', lastname = '$lastname', address = '$address', birthdate = '$birthdate', contact_info = '$contact', gender = '$gender', position_id = '$position', schedule_id = '$schedule' WHERE id = '$empid'";
