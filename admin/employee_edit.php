@@ -11,14 +11,35 @@
 		$gender = $_POST['gender'];
 		$position = $_POST['position'];
 		$schedule = $_POST['schedule'];
-		
-		$sql = "UPDATE employees SET firstname = '$firstname', lastname = '$lastname', address = '$address', birthdate = '$birthdate', contact_info = '$contact', gender = '$gender', position_id = '$position', schedule_id = '$schedule' WHERE id = '$empid'";
-		if($conn->query($sql)){
-			$_SESSION['success'] = 'Employee updated successfully';
+
+		$sql = "SELECT * FROM employees WHERE id = '$empid'";
+		$query = $conn->query($sql);
+
+		if($query->num_rows > 0){
+			$row = $query->fetch_assoc();
+			$schedule_id = $row['schedule_id'];
+
+			if($schedule != $schedule_id){
+				$sql = "UPDATE employees SET schedule_id = '$schedule' ,schedule_updated_on = NOW() WHERE id = '$empid'";
+
+				if($conn->query($sql)){
+					$_SESSION['success'] = 'Employee updated successfully';
+				}
+				else{
+					$_SESSION['error'] = $conn->error;
+				}
+			}
+			else{
+				$sql = "UPDATE employees SET firstname = '$firstname', lastname = '$lastname', address = '$address', birthdate = '$birthdate', contact_info = '$contact', gender = '$gender', position_id = '$position', schedule_id = '$schedule' WHERE id = '$empid'";
+				if($conn->query($sql)){
+					$_SESSION['success'] = 'Employee updated successfully';
+				}
+				else{
+					$_SESSION['error'] = $conn->error;
+			}
 		}
-		else{
-			$_SESSION['error'] = $conn->error;
-		}
+
+	}
 
 	}
 	else{
