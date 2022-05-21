@@ -19,6 +19,8 @@
 			$row = $query->fetch_assoc();
 			$schedule_id = $row['schedule_id'];
 
+			// Check if new schedule_id is selected
+
 			if($schedule != $schedule_id){
 				$sql = "UPDATE employees SET schedule_id = '$schedule' ,schedule_updated_on = NOW() WHERE id = '$empid'";
 
@@ -29,6 +31,9 @@
 					$_SESSION['error'] = $conn->error;
 				}
 			}
+
+			// Proceeds here if schedule does not changed
+
 			else{
 				$sql = "UPDATE employees SET firstname = '$firstname', lastname = '$lastname', address = '$address', birthdate = '$birthdate', contact_info = '$contact', gender = '$gender', position_id = '$position', schedule_id = '$schedule' WHERE id = '$empid'";
 				if($conn->query($sql)){
