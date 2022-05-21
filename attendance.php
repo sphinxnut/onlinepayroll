@@ -4,10 +4,6 @@
 $output = array('error'=>false);
 	// Checking for uploading image
 	if($_POST['image'] && $output['error'] == false){
-	
-
-		
-
 		if(isset($_POST['employee'])){
 			
 	
