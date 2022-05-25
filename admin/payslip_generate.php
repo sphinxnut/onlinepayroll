@@ -33,16 +33,19 @@
     $pdf->SetMargins(PDF_MARGIN_LEFT, '10', PDF_MARGIN_RIGHT);  
     $pdf->setPrintHeader(false);  
     $pdf->setPrintFooter(false);  
-    $pdf->SetAutoPageBreak(TRUE, 10);  
+    $pdf->SetAutoPageBreak(TRUE, 190);  
     $pdf->SetFont('helvetica', '', 11);  
-    $pdf->AddPage(); 
+	$pdf->AddPage();
+
     $contents = '';
 
 	$sql = "SELECT *, SUM(num_hr) AS total_hr, attendance.employee_id AS empid, employees.employee_id AS employee FROM attendance LEFT JOIN employees ON employees.id=attendance.employee_id LEFT JOIN position ON position.id=employees.position_id WHERE date BETWEEN '$from' AND '$to' GROUP BY attendance.employee_id ORDER BY employees.lastname ASC, employees.firstname ASC";
 
 	$query = $conn->query($sql);
 	while($row = $query->fetch_assoc()){
+		 
 		$empid = $row['empid'];
+
 		$deduction = $deduction  + ($row['additonal_deduction_rate'] * 3);
       	$casql = "SELECT *, SUM(amount) AS cashamount FROM cashadvance WHERE employee_id='$empid' AND date_advance BETWEEN '$from' AND '$to'";
       
@@ -53,7 +56,6 @@
 		$gross = $row['rate'] * $row['total_hr'];
 		$total_deduction = $deduction + $cashadvance;
   		$net = $gross - $total_deduction;
-
 		$contents .= '
 			<h2 align="center">Jollibee Sto. Tomas Subic</h2>
 			<h4 align="center">'.$from_title." - ".$to_title.'</h4>
