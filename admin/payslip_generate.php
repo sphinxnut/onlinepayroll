@@ -6,10 +6,17 @@
 	$from = date('Y-m-d', strtotime($ex[0]));
 	$to = date('Y-m-d', strtotime($ex[1]));
 
-	$sql = "SELECT *, SUM(amount) as total_amount FROM deductions";
+	$sql = "SElECT SUM(amount) as total_amount FROM deductions";
+	$query = $conn->query($sql);
+	$deducRow = $query->fetch_assoc();
+	$deduction = $deducRow['total_amount'];
+
+	$sql = "SELECT * FROM deductions";
     $query = $conn->query($sql);
-   	$drow = $query->fetch_assoc();
-    $deduction = $drow['total_amount'];
+	// $nRow = array();
+	while($drow = mysqli_fetch_all($query, MYSQLI_ASSOC)){
+		$nRow= $drow;
+
 
 	$from_title = date('M d, Y', strtotime($ex[0]));
 	$to_title = date('M d, Y', strtotime($ex[1]));
@@ -69,11 +76,34 @@
 				 	<td width="25%" align="right"><b>Gross Pay: </b></td>
 				 	<td width="25%" align="right"><b>'.number_format(($row['rate']*$row['total_hr']), 2).'</b></td> 
     	    	</tr>
+
+				
+				<tr> 
+				<td></td> 
+				<td></td>
+				 <td width="25%" align="right">SSS: </td>
+				 <td width="25%" align="right">'.number_format(json_encode($nRow[0]['amount'],JSON_NUMERIC_CHECK), 2).'</td> 
+				</tr>
+
+				<tr> 
+				<td></td> 
+				<td></td>
+				 <td width="25%" align="right">Pagibig: </td>
+				 <td width="25%" align="right">'.number_format(json_encode($nRow[1]['amount'],JSON_NUMERIC_CHECK), 2).'</td> 
+				</tr>
+
+				<tr> 
+				<td></td> 
+				<td></td>
+				 <td width="25%" align="right">PhilHealth: </td>
+				 <td width="25%" align="right">'.number_format(json_encode($nRow[2]['amount'],JSON_NUMERIC_CHECK), 2).'</td> 
+				</tr>
+
     	    	<tr> 
     	    		<td></td> 
     	    		<td></td>
-				 	<td width="25%" align="right">Deduction: </td>
-				 	<td width="25%" align="right">'.number_format($deduction, 2).'</td> 
+				 	<td width="25%" align="right"><b>Deduction: </b></td>
+				 	<td width="25%" align="right"><b>'.number_format($deduction, 2).'</b></td> 
     	    	</tr>
     	    	<tr> 
     	    		<td></td> 
@@ -96,6 +126,7 @@
     	    </table>
     	    <br><hr>
 		';
+	}
 	}
     $pdf->writeHTML($contents);  
     $pdf->Output('payslip.pdf', 'I');
