@@ -84,21 +84,21 @@
 				<td></td> 
 				<td></td>
 				 <td width="25%" align="right">SSS: </td>
-				 <td width="25%" align="right">'.number_format(json_encode($nRow[0]['amount'],JSON_NUMERIC_CHECK), 2).'</td> 
+				 <td width="25%" align="right">'.number_format(json_encode($nRow[0]['amount'] + $row['additonal_deduction_rate'],JSON_NUMERIC_CHECK), 2).'</td> 
 				</tr>
 
 				<tr> 
 				<td></td> 
 				<td></td>
 				 <td width="25%" align="right">Pagibig: </td>
-				 <td width="25%" align="right">'.number_format(json_encode($nRow[1]['amount'],JSON_NUMERIC_CHECK), 2).'</td> 
+				 <td width="25%" align="right">'.number_format(json_encode($nRow[1]['amount'] + $row['additonal_deduction_rate'],JSON_NUMERIC_CHECK), 2).'</td> 
 				</tr>
 
 				<tr> 
 				<td></td> 
 				<td></td>
 				 <td width="25%" align="right">PhilHealth: </td>
-				 <td width="25%" align="right">'.number_format(json_encode($nRow[2]['amount'],JSON_NUMERIC_CHECK), 2).'</td> 
+				 <td width="25%" align="right">'.number_format(json_encode($nRow[2]['amount'] + $row['additonal_deduction_rate'],JSON_NUMERIC_CHECK), 2).'</td> 
 				</tr>
 
     	    	<tr> 
