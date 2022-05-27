@@ -27,7 +27,7 @@
                   	<label for="address" class="col-sm-3 control-label">Address</label>
 
                   	<div class="col-sm-9">
-                      <textarea class="form-control" name="address" id="address"></textarea>
+                      <textarea class="form-control" name="address" id="address" required></textarea>
                   	</div>
                 </div>
                 <div class="form-group">
@@ -35,7 +35,7 @@
 
                   	<div class="col-sm-9"> 
                       <div class="date">
-                        <input type="text" class="form-control" id="datepicker_add" name="birthdate">
+                        <input type="text" class="form-control" id="datepicker_add" name="birthdate" required>
                       </div>
                   	</div>
                 </div>
@@ -43,7 +43,7 @@
                     <label for="contact" class="col-sm-3 control-label">Contact Info</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="contact" name="contact">
+                      <input type="text" class="form-control" id="contact" name="contact" required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -98,7 +98,7 @@
 
                   	<div class="col-sm-9"> 
                       <div class="date">
-                        <input type="text" class="form-control" id="SSS_add" name="SSS">
+                        <input type="text" class="form-control" id="SSS_add" name="SSS" required>
                       </div>
                   	</div>
                 </div>
@@ -107,7 +107,7 @@
 
                   	<div class="col-sm-9"> 
                       <div class="date">
-                        <input type="text" class="form-control" id="Philhealth_add" name="Philhealth">
+                        <input type="text" class="form-control" id="Philhealth_add" name="Philhealth" required>
                       </div>
                   	</div>
                 </div>
@@ -116,7 +116,7 @@
 
                   	<div class="col-sm-9"> 
                       <div class="date">
-                        <input type="text" class="form-control" id="Pagibig_add" name="Pagibig">
+                        <input type="text" class="form-control" id="Pagibig_add" name="Pagibig" required>
                       </div>
                   	</div>
                 </div>

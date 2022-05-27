@@ -280,13 +280,31 @@ $output = array('error'=>false);
 									$break_in = new DateTime($break_in);
 									$time_out = new DateTime($time_out);
 									$interval = $time_in->diff($time_out);
+
+									$interval2 = $break_out->diff($break_in);
+
 									$hrs = $interval->format('%h');
 									$mins = $interval->format('%i');
-									$mins = $mins/60;
-									$int = $hrs + $mins;
-									if($int > 4){
-										$int = $int - 1;
-									}
+									$mins = $mins;
+
+									$hrs2 = $interval2->format('%h');
+									$mins2 = $interval2->format('%i');
+									$mins2 = $mins2;
+
+									
+
+									$hours = $hrs - $hrs2;
+
+									// echo '<script>alert('.$hours.')</script>';
+
+									$minutes = ($mins - $mins2)/60;
+									// echo '<script>alert('.$minutes.')</script>';
+
+									$int = ($hours + $minutes);
+
+									// if($int > 4){
+									// 	$int = $int - 1;
+									// }
 		
 									$sql = "UPDATE attendance SET num_hr = '$int' WHERE id = '".$row['uid']."'";
 									if($conn->query($sql)){
