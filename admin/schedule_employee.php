@@ -58,14 +58,14 @@
                           $query = $conn->query($sql);
                           while($srow = $query->fetch_assoc()){
                             echo "
-                              <option value='".$srow['id']."'>".$srow['time_in'].' - '.$srow['break_out'].' - '.$srow['break.in'].' - '.$srow['time_out']."</option>
+                              <option value='".$srow['id']."'>".date('h:i A', strtotime($srow['time_in'])).' - '.date('h:i A', strtotime($srow['time_out']))."</option>
                             ";
                           }
                         ?>
                       </select>
                     </div>
                     <button type="button" class="btn btn-success btn-sm btn-flat" id="schedulePrint"><span class="glyphicon glyphicon-print"></span> Print</button>
-
+                    
                 <!-- <a href="schedule_print.php" class="btn btn-success btn-sm btn-flat"><span class="glyphicon glyphicon-print"></span> </a> -->
 
                
