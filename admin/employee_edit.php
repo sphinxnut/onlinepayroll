@@ -11,6 +11,9 @@
 		$gender = $_POST['gender'];
 		$position = $_POST['position'];
 		$schedule = $_POST['schedule'];
+		$SSS = $_POST['SSS'];
+		$Pagibig = $_POST['Pagibig'];
+		$Philhealth = $_POST['Philhealth'];
 
 		$sql = "SELECT * FROM employees WHERE id = '$empid'";
 		$query = $conn->query($sql);
@@ -35,7 +38,7 @@
 			// Proceeds here if schedule_id does not changed
 
 			else{
-				$sql = "UPDATE employees SET firstname = '$firstname', lastname = '$lastname', address = '$address', birthdate = '$birthdate', contact_info = '$contact', gender = '$gender', position_id = '$position', schedule_id = '$schedule' WHERE id = '$empid'";
+				$sql = "UPDATE employees SET firstname = '$firstname', lastname = '$lastname', address = '$address', birthdate = '$birthdate', contact_info = '$contact', gender = '$gender', position_id = '$position', schedule_id = '$schedule', SSS = $SSS, Pagibig = $Pagibig, Philhealth = $Philhealth WHERE id = '$empid'";
 				if($conn->query($sql)){
 					$_SESSION['success'] = 'Employee updated successfully';
 				}

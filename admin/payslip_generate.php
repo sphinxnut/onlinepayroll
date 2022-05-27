@@ -46,7 +46,8 @@
 		 
 		$empid = $row['empid'];
 
-		$deduction = $deduction  + ($row['additonal_deduction_rate'] * 3);
+		// $deduction = $deduction  + ($row['additonal_deduction_rate'] * 3);
+		$deduction = $row['SSS'] + $row['Philhealth'] + $row['Pagibig'];
       	$casql = "SELECT *, SUM(amount) AS cashamount FROM cashadvance WHERE employee_id='$empid' AND date_advance BETWEEN '$from' AND '$to'";
       
       	$caquery = $conn->query($casql);
@@ -84,21 +85,22 @@
 				<td></td> 
 				<td></td>
 				 <td width="25%" align="right">SSS: </td>
-				 <td width="25%" align="right">'.number_format(json_encode($nRow[0]['amount'] + $row['additonal_deduction_rate'],JSON_NUMERIC_CHECK), 2).'</td> 
+				 <td width="25%" align="right">'.number_format(json_encode($row['SSS'],JSON_NUMERIC_CHECK), 2).'</td> 
+	
 				</tr>
 
 				<tr> 
 				<td></td> 
 				<td></td>
 				 <td width="25%" align="right">Pagibig: </td>
-				 <td width="25%" align="right">'.number_format(json_encode($nRow[1]['amount'] + $row['additonal_deduction_rate'],JSON_NUMERIC_CHECK), 2).'</td> 
+				 <td width="25%" align="right">'.number_format(json_encode($row['Pagibig'],JSON_NUMERIC_CHECK), 2).'</td> 
 				</tr>
 
 				<tr> 
 				<td></td> 
 				<td></td>
 				 <td width="25%" align="right">PhilHealth: </td>
-				 <td width="25%" align="right">'.number_format(json_encode($nRow[2]['amount'] + $row['additonal_deduction_rate'],JSON_NUMERIC_CHECK), 2).'</td> 
+				 <td width="25%" align="right">'.number_format(json_encode($row['Philhealth'],JSON_NUMERIC_CHECK), 2).'</td> 
 				</tr>
 
     	    	<tr> 

@@ -56,6 +56,9 @@
                   <th>Photo</th>
                   <th>Name</th>
                   <th>Position</th>
+                  <th>SSS</th>
+                  <th>Philhealth</th>
+                  <th>Pagibig</th>
                   <th>Schedule</th>
                   <th>Member Since</th>
                   <th>Tools</th>
@@ -71,6 +74,9 @@
                           <td><img src="<?php echo (!empty($row['photo']))? '../images/'.$row['photo']:'../images/profile.jpg'; ?>" width="30px" height="30px"> <a href="#edit_photo" data-toggle="modal" class="pull-right photo" data-id="<?php echo $row['empid']; ?>"><span class="fa fa-edit"></span></a></td>
                           <td><?php echo $row['firstname'].' '.$row['lastname']; ?></td>
                           <td><?php echo $row['description']; ?></td>
+                          <td><?php echo $row['SSS']; ?></td>
+                          <td><?php echo $row['Philhealth']; ?></td>
+                          <td><?php echo $row['Pagibig']; ?></td>
                           <td><?php echo date('h:i A', strtotime($row['time_in'])).' - '.date('h:i A', strtotime($row['time_out'])); ?></td>
                           <td><?php echo date('M d, Y', strtotime($row['created_on'])) ?></td>
                           <td>
@@ -133,6 +139,9 @@ function getRow(id){
       $('#edit_lastname').val(response.lastname);
       $('#edit_address').val(response.address);
       $('#datepicker_edit').val(response.birthdate);
+      $('#SSS_edit').val(response.SSS);
+      $('#Philhealth_edit').val(response.Philhealth);
+      $('#Pagibig_edit').val(response.Pagibig);
       $('#edit_contact').val(response.contact_info);
       $('#gender_val').val(response.gender).html(response.gender);
       $('#position_val').val(response.position_id).html(response.description);

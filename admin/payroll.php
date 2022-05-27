@@ -77,10 +77,15 @@
                 <tbody>
                   <?php
                     $sql = "SELECT *, SUM(amount) as total_amount FROM deductions";
-                    // echo '<script type="text/javascript">alert("'.$sql.'");</script>';
+                    
                     $query = $conn->query($sql);
                     $drow = $query->fetch_assoc();
                     $deduction = $drow['total_amount'];
+                    // echo $sql;
+                    // foreach( $deduction as $item ) {
+                    //   echo $item;
+                    // }
+
   
                     
                     $to = date('Y-m-d');
@@ -100,11 +105,15 @@
                     while($row = $query->fetch_assoc()){
                       $empid = $row['empid'];
 
+                      // echo '<script type="text/javascript">alert("'.$row['SSS'].'");</script>';
+
                       //Para may additional deduction depending sa ilalagay don sa position so kung programmer additional deduction is 5 pesos, therefore 5x3=15. 
                       // Bakit 3? kasi tatlo yung philhealth,sss,pagibig.
                       //Nilagay ko sa part na to para makuha yung $row['additonal_deduction_rate'] na value
                       //Formula:
-                      $deduction = $deduction  + ($row['additonal_deduction_rate'] * 3);
+          
+                      // $deduction = $deduction  + ($row['additonal_deduction_rate'] * 3);
+                      $deduction = $row['SSS'] + $row['Philhealth'] + $row['Pagibig'];
                      
                       $casql = "SELECT *, SUM(amount) AS cashamount FROM cashadvance WHERE employee_id='$empid' AND date_advance BETWEEN '$from' AND '$to'";
                       $caquery = $conn->query($casql);          

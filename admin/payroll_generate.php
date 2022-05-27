@@ -11,7 +11,8 @@
 		while($row = $query->fetch_assoc()){
 			$empid = $row['empid'];
 
-			$deduction = $deduction  + ($row['additonal_deduction_rate'] * 3);
+			// $deduction = $deduction  + ($row['additonal_deduction_rate'] * 3);
+			$deduction = $row['SSS'] + $row['Philhealth'] + $row['Pagibig'];
                       
 	      	$casql = "SELECT *, SUM(amount) AS cashamount FROM cashadvance WHERE employee_id='$empid' AND date_advance BETWEEN '$from' AND '$to'";
 	      

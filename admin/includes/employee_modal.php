@@ -94,6 +94,33 @@
                     </div>
                 </div>
                 <div class="form-group">
+                  	<label for="SSS_add" class="col-sm-3 control-label">SSS Deduction</label>
+
+                  	<div class="col-sm-9"> 
+                      <div class="date">
+                        <input type="text" class="form-control" id="SSS_add" name="SSS">
+                      </div>
+                  	</div>
+                </div>
+                <div class="form-group">
+                  	<label for="Philhealth_add" class="col-sm-3 control-label">Philhealth Deduction</label>
+
+                  	<div class="col-sm-9"> 
+                      <div class="date">
+                        <input type="text" class="form-control" id="Philhealth_add" name="Philhealth">
+                      </div>
+                  	</div>
+                </div>
+                <div class="form-group">
+                  	<label for="Pagibig_add" class="col-sm-3 control-label">Pagibig Deduction</label>
+
+                  	<div class="col-sm-9"> 
+                      <div class="date">
+                        <input type="text" class="form-control" id="Pagibig_add" name="Pagibig">
+                      </div>
+                  	</div>
+                </div>
+                <div class="form-group">
                     <label for="photo" class="col-sm-3 control-label">Photo</label>
 
                     <div class="col-sm-9">
@@ -205,6 +232,33 @@
                         ?>
                       </select>
                     </div>
+                </div>
+                <div class="form-group">
+                  	<label for="SSS_edit" class="col-sm-3 control-label">SSS Deduction</label>
+
+                  	<div class="col-sm-9"> 
+                      <div class="date">
+                        <input type="text" class="form-control" id="SSS_edit" name="SSS">
+                      </div>
+                  	</div>
+                </div>
+                <div class="form-group">
+                  	<label for="Philhealth_edit" class="col-sm-3 control-label">Philhealth Deduction</label>
+
+                  	<div class="col-sm-9"> 
+                      <div class="date">
+                        <input type="text" class="form-control" id="Philhealth_edit" name="Philhealth">
+                      </div>
+                  	</div>
+                </div>
+                <div class="form-group">
+                  	<label for="Pagibig_edit" class="col-sm-3 control-label">Pagibig Deduction</label>
+
+                  	<div class="col-sm-9"> 
+                      <div class="date">
+                        <input type="text" class="form-control" id="Pagibig_edit" name="Pagibig">
+                      </div>
+                  	</div>
                 </div>
           	</div>
           	<div class="modal-footer">
