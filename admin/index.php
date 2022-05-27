@@ -5,11 +5,11 @@
   }
 ?>
 <?php include 'includes/header.php'; ?>
-<body style="background-color:black" class="hold-transition login-page">
+<body style="background-image: url('../assets/1.jpg'); background-repeat: no-repeat;  background-size: 100% 100%; " class="hold-transition login-page">
 <div class="login-box">
   	<div class="login-logo">
-      <h1 style="font-family: Times new Roman; color:#00ffbf; font-weight: bold">ATTENDANCE MANAGEMENT AND PAYROLL SYSTEM</h1>
-  		<b style="color:white">Admin Login</b>
+      <h1 style="font-family: Times new Roman; color:black; font-weight: bold">ATTENDANCE MANAGEMENT AND PAYROLL SYSTEM</h1>
+  		<b style="color:gold">Admin Login</b>
   	</div>
   
   	<div class="login-box-body">

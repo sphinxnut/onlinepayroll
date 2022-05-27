@@ -22,11 +22,12 @@
         }
     </style>
 </head>
-<body style="background-color: black"class="hold-transition login-page">
+<body style="background-image: url('assets/2.jpg'); background-repeat: no-repeat;  background-size: 100% 100%; "class="hold-transition login-page">
 <div class="login-box">
   	<div class="login-logo">
-  		<p style="color:#00ffbf" id="date"></p>
-      <p style="color:white" id="time" class="bold"></p>
+    <!-- 00ffbf -->
+  		<p style="color:black" id="date"></p>
+      <p style="color:lightblue" id="time" class="bold"></p>
   	</div>
   
   	<div class="login-box-body">
