@@ -47,8 +47,32 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header with-border">
-              <a href="schedule_print.php" class="btn btn-success btn-sm btn-flat"><span class="glyphicon glyphicon-print"></span> Print</a>
+              <div class="pull-right">
+                <form method="POST" class="form-inline" id="scheduleForm">
+                  <div class="form-group">
+                      <label>Select Schedule: </label>
+                      <select class="form-control" id="schedule" name="schedule" required>
+                        <option value="" selected>- Select -</option>
+                        <?php
+                          $sql = "SELECT * FROM schedules";
+                          $query = $conn->query($sql);
+                          while($srow = $query->fetch_assoc()){
+                            echo "
+                              <option value='".$srow['id']."'>".$srow['time_in'].' - '.$srow['break_out'].' - '.$srow['break.in'].' - '.$srow['time_out']."</option>
+                            ";
+                          }
+                        ?>
+                      </select>
+                    </div>
+                    <button type="button" class="btn btn-success btn-sm btn-flat" id="schedulePrint"><span class="glyphicon glyphicon-print"></span> Print</button>
+
+                <!-- <a href="schedule_print.php" class="btn btn-success btn-sm btn-flat"><span class="glyphicon glyphicon-print"></span> </a> -->
+
+               
+                </form>
+              </div>
             </div>
+
             <div class="box-body">
               <table id="example1" class="table table-bordered">
                 <thead>
@@ -96,6 +120,13 @@ $(function(){
     getRow(id);
   });
 });
+
+$('#schedulePrint').click(function(e){
+    e.preventDefault();
+    $('#scheduleForm').attr('action', 'schedule_print.php');
+    $('#scheduleForm').submit();
+  });
+
 
 function getRow(id){
   $.ajax({

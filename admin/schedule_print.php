@@ -1,10 +1,12 @@
 <?php
 	include 'includes/session.php';
-
+ 
 	function generateRow($conn){
+        $schedule = $_POST['schedule'];
+        
 		$contents = '';
         $last = "NOW()";
-        $sql = "SELECT *, employees.id AS empid FROM employees LEFT JOIN schedules ON schedules.id=employees.schedule_id";
+        $sql = "SELECT *, employees.id AS empid FROM employees LEFT JOIN schedules ON schedules.id=employees.schedule_id WHERE schedules.id = '$schedule'";
 
 		$query = $conn->query($sql);
 		$total = 0;
