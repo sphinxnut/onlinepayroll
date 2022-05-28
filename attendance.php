@@ -22,7 +22,8 @@ $output = array('error'=>false);
 				$id = $row['id'];
 	
 				$date_now = date('Y-m-d');
-	
+				$sched = $row['schedule_id'];
+			
 
 				switch ($status) {
 					case 'in':
@@ -34,16 +35,17 @@ $output = array('error'=>false);
 							}
 							else{
 								//updates
-								$sched = $row['schedule_id'];
+								// Chinecheck nito yung schedule na nakaassign kay emmployee 
+								// then kincompare nya yung current time against sa nakaassign kay employee
+								// Kapag on time 1 kapag hindi 0 
 								$lognow = date('H:i:s');
 								$sql = "SELECT * FROM schedules WHERE id = '$sched'";
 								$squery = $conn->query($sql);
 								$srow = $squery->fetch_assoc();
-								// $logstatus = ($lognow > $srow['time_in']) ? 0 : 1;
-								//
-								
+								$logstatus = ($lognow > $srow['time_in']) ? 1 : 0;
 
-								$sql = "INSERT INTO attendance (employee_id, date, time_in, status) VALUES ('$id', '$date_now', NOW(), '1')";
+		
+								$sql = "INSERT INTO attendance (employee_id, date, time_in, status) VALUES ('$id', '$date_now', NOW(), 	$logstatus)";
 								if($conn->query($sql)){
 									// Upload image if database successfully updated
 									include 'saveUploadImg.php';
@@ -71,7 +73,7 @@ $output = array('error'=>false);
 								}
 								else{
 									
-									$sql = "UPDATE attendance SET break_out = NOW(), status='0' WHERE id = '".$row['uid']."'";
+									$sql = "UPDATE attendance SET break_out = NOW() WHERE id = '".$row['uid']."'";
 									$output['message'] = 'Break out: '.$row['firstname'].' '.$row['lastname'];
 									if($conn->query($sql)){
 
@@ -152,7 +154,7 @@ $output = array('error'=>false);
 								}
 								else{
 									
-									$sql = "UPDATE attendance SET break_in = NOW(), status='1' WHERE id = '".$row['uid']."'";
+									$sql = "UPDATE attendance SET break_in = NOW() WHERE id = '".$row['uid']."'";
 									if($conn->query($sql)){
 										
 										// Upload image if database successfully updated
@@ -232,7 +234,7 @@ $output = array('error'=>false);
 							}
 							else{
 								
-								$sql = "UPDATE attendance SET time_out = NOW(), status='0' WHERE id = '".$row['uid']."'";
+								$sql = "UPDATE attendance SET time_out = NOW() WHERE id = '".$row['uid']."'";
 								if($conn->query($sql)){
 		
 									$date_now = date('Y-m-d');
