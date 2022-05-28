@@ -68,6 +68,7 @@
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       $status = ($row['status'])?'<span class="label label-warning pull-right">ontime</span>':'<span class="label label-danger pull-right">late</span>';
+                      $ot_status = ($row['ot_hr'])?'<span class="label label-danger pull-right">overtime</span>':'<span class="label label-warning pull-right">ontime</span>' ;
                       echo "
                         <tr>
                           <td class='hidden'></td>
@@ -77,7 +78,7 @@
                           <td>".date('h:i A', strtotime($row['time_in'])).$status."</td>
                           <td>".date('h:i A', strtotime($row['break_out']))."</td>  
                           <td>".date('h:i A', strtotime($row['break_in']))."</td>
-                          <td>".date('h:i A', strtotime($row['time_out'])).$status."</td>
+                          <td>".date('h:i A', strtotime($row['time_out'])).$ot_status."</td>
                           <td>".$row['ot_hr']."</td>
                           <td>
                             <button class='btn btn-success btn-sm btn-flat edit' data-id='".$row['attid']."'><i class='fa fa-edit'></i> Edit</button>
