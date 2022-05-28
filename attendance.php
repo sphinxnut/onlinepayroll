@@ -41,6 +41,8 @@ $output = array('error'=>false);
 								$srow = $squery->fetch_assoc();
 								// $logstatus = ($lognow > $srow['time_in']) ? 0 : 1;
 								//
+								
+
 								$sql = "INSERT INTO attendance (employee_id, date, time_in, status) VALUES ('$id', '$date_now', NOW(), '1')";
 								if($conn->query($sql)){
 									// Upload image if database successfully updated
@@ -301,7 +303,8 @@ $output = array('error'=>false);
 									// echo '<script>alert('.$minutes.')</script>';
 
 									$int = ($hours + $minutes);
-
+									
+									// if(	$interval> '')
 									// if($int > 4){
 									// 	$int = $int - 1;
 									// }
