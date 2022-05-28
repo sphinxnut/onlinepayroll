@@ -22,7 +22,7 @@
         }
     </style>
 </head>
-<body style="background-image: url('assets/2.jpg'); background-repeat: no-repeat;  background-size: 100% 100%; "class="hold-transition login-page">
+<body style="background-image: url('images/assets/2.jpg'); background-repeat: no-repeat;  background-size: 100% 100%; "class="hold-transition login-page">
 <div class="login-box">
   	<div class="login-logo">
     <!-- 00ffbf -->
