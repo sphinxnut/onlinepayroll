@@ -1,12 +1,17 @@
 <?php
 	include 'includes/session.php';
  
-	function generateRow($conn){
-        $schedule = $_POST['schedule'];
+	function generateRow($conn,$from, $to){
+        // $schedule = $_POST['schedule'];
+
+        if($from && $to){
+			$sql = "SELECT *, employees.id AS empid FROM attendance LEFT JOIN employees ON employees.id=attendance.employee_id LEFT JOIN schedules ON schedules.id=employees.schedule_id WHERE attendance.date BETWEEN '$from' AND '$to'ORDER BY employees.updated_on ASC";
+		}else{
+            $sql = "SELECT *, employees.id AS empid FROM employees LEFT JOIN schedules ON schedules.id=employees.schedule_id";
+        }
         
 		$contents = '';
         $last = "NOW()";
-        $sql = "SELECT *, employees.id AS empid FROM employees LEFT JOIN schedules ON schedules.id=employees.schedule_id WHERE schedules.id = '$schedule'";
 
 		$query = $conn->query($sql);
 		$total = 0;
@@ -26,6 +31,14 @@
 
 		return $contents;
 	}
+
+    $range = $_POST['date_range'];
+    $ex = explode(' - ', $range);
+    $from = date('Y-m-d', strtotime($ex[0]));
+    $to = date('Y-m-d', strtotime($ex[1]));
+
+    $from_title = date('M d, Y', strtotime($ex[0]));
+	$to_title = date('M d, Y', strtotime($ex[1]));
 
 	require_once('../tcpdf/tcpdf.php');  
     $pdf = new TCPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);  
@@ -48,6 +61,7 @@
     $content = '';  
     $content .= '
       	<h2 align="center">Jollibee Sto. Tomas Subic</h2>
+        <h4 align="center">'.$from_title." - ".$to_title.'</h4>
       	<h4 align="center">Employee Schedule</h4>
 
       	<table border="1" cellspacing="0" cellpadding="3">  
@@ -58,7 +72,7 @@
                 <th width="20%" align="center"><b>Date</b></th> 
            </tr>  
       ';  
-    $content .= generateRow($conn); 
+    $content .= generateRow($conn, $from, $to); 
     $content .= '</table>';  
     $pdf->writeHTML($content);  
     $pdf->Output('schedule.pdf', 'I');

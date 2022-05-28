@@ -1,7 +1,17 @@
 <?php include 'includes/session.php'; ?>
+
+<?php
+  include '../timezone.php';
+  $range_to = date('m/d/Y');
+  $range_from = date('m/d/Y', strtotime('-30 day', strtotime($range_to)));
+?>
+
 <?php include 'includes/header.php'; ?>
+
+
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
+
 
   <?php include 'includes/navbar.php'; ?>
   <?php include 'includes/menubar.php'; ?>
@@ -49,7 +59,15 @@
             <div class="box-header with-border">
               <div class="pull-right">
                 <form method="POST" class="form-inline" id="scheduleForm">
-                  <div class="form-group">
+
+                <div class="input-group">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right col-sm-8" id="reservation" name="date_range" value="<?php echo (isset($_GET['date'])) ? $_GET['date'] : $range_from.' - '.$range_to; ?>">
+                  </div>
+
+                  <!-- <div class="form-group">
                       <label>Select Schedule: </label>
                       <select class="form-control" id="schedule" name="schedule" required>
                         <option value="" selected>- Select -</option>
@@ -63,7 +81,7 @@
                           }
                         ?>
                       </select>
-                    </div>
+                    </div> -->
                     <button type="button" class="btn btn-success btn-sm btn-flat" id="schedulePrint"><span class="glyphicon glyphicon-print"></span> Print</button>
                     
                 <!-- <a href="schedule_print.php" class="btn btn-success btn-sm btn-flat"><span class="glyphicon glyphicon-print"></span> </a> -->
@@ -82,10 +100,25 @@
                   <th>Tools</th>
                 </thead>
                 <tbody>
-                  <?php
-                    $sql = "SELECT *, employees.id AS empid FROM employees LEFT JOIN schedules ON schedules.id=employees.schedule_id ORDER BY employees.updated_on DESC";
+                  <?php 
+                      $sql;
+                      if(isset($_GET['date'])){
+                        $range = $_GET['date'];
+                        $ex = explode(' - ', $range);
+                        $from = date('Y-m-d', strtotime($ex[0]));
+                        $to = date('Y-m-d', strtotime($ex[1]));
+                        // echo '<script>alert('. $to.')</script>';
+
+                        $sql = "SELECT *, employees.id AS empid FROM attendance LEFT JOIN employees ON employees.id=attendance.employee_id LEFT JOIN schedules ON schedules.id=employees.schedule_id WHERE attendance.date BETWEEN '$from' AND '$to'ORDER BY employees.updated_on DESC";
+
+                      }else{
+                        $sql = "SELECT *, employees.id AS empid FROM employees LEFT JOIN schedules ON schedules.id=employees.schedule_id ORDER BY employees.updated_on DESC";
+                      }
+                      
                     $query = $conn->query($sql);
+
                     while($row = $query->fetch_assoc()){
+                      
                       echo "
                         <tr>
                           <td>".$row['employee_id']."</td>
@@ -119,13 +152,26 @@ $(function(){
     var id = $(this).data('id');
     getRow(id);
   });
+
+  $("#reservation").on('change', function(){
+    var date = encodeURI($(this).val());
+    window.location = 'schedule_employee.php?date='+date;
+  });
+
+
+// $("#reservation").on('change', function(){
+//     var range = encodeURI($(this).val());
+//     window.location = 'schedule_employee.php?range='+range;
+// });
+
+  $('#schedulePrint').click(function(e){
+      e.preventDefault();
+      $('#scheduleForm').attr('action', 'schedule_print.php');
+      $('#scheduleForm').submit();
+    });
+
 });
 
-$('#schedulePrint').click(function(e){
-    e.preventDefault();
-    $('#scheduleForm').attr('action', 'schedule_print.php');
-    $('#scheduleForm').submit();
-  });
 
 
 function getRow(id){
