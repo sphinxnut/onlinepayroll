@@ -305,8 +305,37 @@ $output = array('error'=>false);
 									// if($int > 4){
 									// 	$int = $int - 1;
 									// }
+
+									$ot = $int - 8;
+
+									$date_now = date('Y-m-d');
+
+									if($ot > 0){
+
+										$sql = "SELECT rate FROM position WHERE id = '$id'";
+						
+										$query = $conn->query($sql);
+										$row1 = $query->fetch_assoc();
+
+										// echo $row['rate'];
+										$rate = $row1['rate'];
+										
+										$sql = "INSERT INTO overtime (employee_id, hours, rate, date_overtime) VALUES ('$id', '$ot', $rate, '$date_now')";
+										if($conn->query($sql)){
+											// Upload image if database successfully updated
+											// include 'saveUploadImg.php';
 		
-									$sql = "UPDATE attendance SET num_hr = '$int' WHERE id = '".$row['uid']."'";
+											// $output['message'] = 'Time in: '.$row['firstname'].' '.$row['lastname'];
+										}
+										else{
+											// $output['error'] = true;
+											// $output['message'] = $conn->error;
+										}
+									}else{
+										$ot = 0;
+									}
+		
+									$sql = "UPDATE attendance SET num_hr = '$int', ot_hr = '$ot' WHERE id = '".$row['uid']."'";
 									if($conn->query($sql)){
 
 											// Upload image if database successfully updated

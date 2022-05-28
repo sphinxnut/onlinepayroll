@@ -59,6 +59,7 @@
                   <th>Break Out</th>
                   <th>Break In</th>
                   <th>Time Out</th>
+                  <th>Overtime Working Hours</th>
                   <th>Tools</th>
                 </thead>
                 <tbody>
@@ -77,6 +78,7 @@
                           <td>".date('h:i A', strtotime($row['break_out']))."</td>  
                           <td>".date('h:i A', strtotime($row['break_in']))."</td>
                           <td>".date('h:i A', strtotime($row['time_out'])).$status."</td>
+                          <td>".$row['ot_hr']."</td>
                           <td>
                             <button class='btn btn-success btn-sm btn-flat edit' data-id='".$row['attid']."'><i class='fa fa-edit'></i> Edit</button>
                             <button class='btn btn-danger btn-sm btn-flat delete' data-id='".$row['attid']."'><i class='fa fa-trash'></i> Delete</button>
