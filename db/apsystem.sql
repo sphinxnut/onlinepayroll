@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 28, 2022 at 06:16 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- Generation Time: May 28, 2022 at 07:24 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.3.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -62,17 +62,6 @@ CREATE TABLE `attendance` (
   `num_hr` double NOT NULL,
   `ot_hr` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `attendance`
---
-
-INSERT INTO `attendance` (`id`, `employee_id`, `date`, `time_in`, `break_out`, `status`, `break_in`, `time_out`, `num_hr`, `ot_hr`) VALUES
-(113, 1, '2022-05-03', '09:07:34', '11:07:34', 0, '13:07:34', '21:08:40', 11.016666666667, 0),
-(114, 1, '2022-05-25', '09:11:34', '11:11:34', 0, '14:11:34', '21:12:41', 11.016666666667, 0),
-(115, 1, '2022-05-26', '09:13:56', '11:14:02', 0, '14:14:08', '21:14:51', 11, 0),
-(116, 1, '2022-05-27', '07:08:00', '11:08:37', 1, '12:08:37', '22:10:38', 8, 0),
-(118, 1, '2022-05-28', '01:14:58', '05:16:00', 0, '06:16:00', '12:14:46', 9.9833333333333, 1.9833333333333);
 
 -- --------------------------------------------------------
 
@@ -147,7 +136,7 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (`id`, `employee_id`, `firstname`, `lastname`, `address`, `birthdate`, `contact_info`, `gender`, `position_id`, `schedule_id`, `schedule_updated_on`, `photo`, `created_on`, `updated_on`, `SSS`, `Philhealth`, `Pagibig`) VALUES
-(1, 'ABC123456789', 'Mikaela', 'Bermoy', 'Surigao City', '2018-04-02', '09079373999', 'Male', 1, 2, '2022-05-21', 'profile youtube1.jpg', '2018-04-28', '2022-05-27 21:05:14', 500.00, 420.00, 210.00),
+(1, 'ABC123456789', 'Mikaela', 'Bermoy', 'Surigao City', '2018-04-02', '09079373999', 'Male', 1, 1, '2022-05-28', 'profile youtube1.jpg', '2018-04-28', '2022-05-28 13:23:48', 500.00, 420.00, 210.00),
 (3, 'DYE473869250', 'Jonah', 'Juarez', 'Surigao City', '1992-05-02', '09123456789', 'Female', 2, 2, '2022-05-01', '3.jpg', '2018-04-30', '2022-05-27 12:15:22', 0.00, 0.00, 0.00),
 (5, 'CWI760945382', 'Gerald', 'Tagle', 'Olongapo City Zambales', '1999-09-09', '09079373999', 'Female', 2, 3, '2022-05-21', '2.png', '2022-05-21', '2022-05-27 21:02:51', 0.00, 0.00, 0.00),
 (15, 'CAN095713624', 'Sample', 'Sample', 'Sample', '2022-06-01', '09164877986', 'Male', 1, 2, '2022-05-27', 'mora-login1.png', '2022-05-27', '2022-05-27 21:26:52', 250.00, 420.00, 210.00);
@@ -214,7 +203,7 @@ INSERT INTO `schedules` (`id`, `time_in`, `time_out`) VALUES
 (1, '07:00:00', '16:00:00'),
 (2, '08:00:00', '17:00:00'),
 (3, '09:00:00', '18:00:00'),
-(4, '10:00:00', '19:00:00');
+(4, '14:00:00', '22:00:00');
 
 --
 -- Indexes for dumped tables
@@ -282,7 +271,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 
 --
 -- AUTO_INCREMENT for table `cashadvance`
