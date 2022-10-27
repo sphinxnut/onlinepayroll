@@ -46,10 +46,14 @@
                 <th width="30%" align="center"><b>Employee ID</b></th>
 				<th width="30%" align="center"><b>Schedule</b></th> 
            </tr>  
-      ';  
+      ';
+       var_dump(array(
+    "data" => "demo"
+));  
     $content .= generateRow($conn); 
     $content .= '</table>';  
     $pdf->writeHTML($content);  
+    ob_end_clean();
     $pdf->Output('schedule.pdf', 'I');
 
 ?>

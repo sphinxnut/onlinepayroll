@@ -78,10 +78,15 @@
                 <th width="30%" align="center"><b>Employee ID</b></th>
 				<th width="30%" align="center"><b>Net Pay</b></th> 
            </tr>  
-      ';  
+      ';
+	  var_dump(array(
+    "data" => "demo"
+));
+  
     $content .= generateRow($from, $to, $conn, $deduction);  
     $content .= '</table>';  
     $pdf->writeHTML($content);  
+	ob_end_clean();
     $pdf->Output('payroll.pdf', 'I');
 
 ?>

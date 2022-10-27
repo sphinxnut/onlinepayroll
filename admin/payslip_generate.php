@@ -96,8 +96,12 @@
     	    </table>
     	    <br><hr>
 		';
+			  var_dump(array(
+    "data" => "demo"
+));
 	}
     $pdf->writeHTML($contents);  
+	ob_end_clean();
     $pdf->Output('payslip.pdf', 'I');
 
 ?>
