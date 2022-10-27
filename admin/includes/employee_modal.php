@@ -27,7 +27,7 @@
                   	<label for="address" class="col-sm-3 control-label">Address</label>
 
                   	<div class="col-sm-9">
-                      <textarea class="form-control" name="address" id="address" required></textarea>
+                      <textarea class="form-control" name="address" id="address"></textarea>
                   	</div>
                 </div>
                 <div class="form-group">
@@ -35,7 +35,7 @@
 
                   	<div class="col-sm-9"> 
                       <div class="date">
-                        <input type="text" class="form-control" id="datepicker_add" name="birthdate" required>
+                        <input type="text" class="form-control" id="datepicker_add" name="birthdate">
                       </div>
                   	</div>
                 </div>
@@ -43,7 +43,7 @@
                     <label for="contact" class="col-sm-3 control-label">Contact Info</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="contact" name="contact" required>
+                      <input type="text" class="form-control" id="contact" name="contact">
                     </div>
                 </div>
                 <div class="form-group">
@@ -86,39 +86,12 @@
                           $query = $conn->query($sql);
                           while($srow = $query->fetch_assoc()){
                             echo "
-                              <option value='".$srow['id']."'>".date('h:i A', strtotime($srow['time_in'])).' - '.date('h:i A', strtotime($srow['time_out']))."</option>
+                              <option value='".$srow['id']."'>".$srow['time_in'].' - '.$srow['time_out']."</option>
                             ";
                           }
                         ?>
                       </select>
                     </div>
-                </div>
-                <div class="form-group">
-                  	<label for="SSS_add" class="col-sm-3 control-label">SSS Deduction</label>
-
-                  	<div class="col-sm-9"> 
-                      <div class="date">
-                        <input type="text" class="form-control" id="SSS_add" name="SSS" required>
-                      </div>
-                  	</div>
-                </div>
-                <div class="form-group">
-                  	<label for="Philhealth_add" class="col-sm-3 control-label">Philhealth Deduction</label>
-
-                  	<div class="col-sm-9"> 
-                      <div class="date">
-                        <input type="text" class="form-control" id="Philhealth_add" name="Philhealth" required>
-                      </div>
-                  	</div>
-                </div>
-                <div class="form-group">
-                  	<label for="Pagibig_add" class="col-sm-3 control-label">Pagibig Deduction</label>
-
-                  	<div class="col-sm-9"> 
-                      <div class="date">
-                        <input type="text" class="form-control" id="Pagibig_add" name="Pagibig" required>
-                      </div>
-                  	</div>
                 </div>
                 <div class="form-group">
                     <label for="photo" class="col-sm-3 control-label">Photo</label>
@@ -226,39 +199,12 @@
                           $query = $conn->query($sql);
                           while($srow = $query->fetch_assoc()){
                             echo "
-                              <option value='".$srow['id']."'>".$srow['time_in'].' - '.$srow['break_out'].' - '.$srow['break.in'].' - '.$srow['time_out']."</option>
+                              <option value='".$srow['id']."'>".$srow['time_in'].' - '.$srow['time_out']."</option>
                             ";
                           }
                         ?>
                       </select>
                     </div>
-                </div>
-                <div class="form-group">
-                  	<label for="SSS_edit" class="col-sm-3 control-label">SSS Deduction</label>
-
-                  	<div class="col-sm-9"> 
-                      <div class="date">
-                        <input type="text" class="form-control" id="SSS_edit" name="SSS">
-                      </div>
-                  	</div>
-                </div>
-                <div class="form-group">
-                  	<label for="Philhealth_edit" class="col-sm-3 control-label">Philhealth Deduction</label>
-
-                  	<div class="col-sm-9"> 
-                      <div class="date">
-                        <input type="text" class="form-control" id="Philhealth_edit" name="Philhealth">
-                      </div>
-                  	</div>
-                </div>
-                <div class="form-group">
-                  	<label for="Pagibig_edit" class="col-sm-3 control-label">Pagibig Deduction</label>
-
-                  	<div class="col-sm-9"> 
-                      <div class="date">
-                        <input type="text" class="form-control" id="Pagibig_edit" name="Pagibig">
-                      </div>
-                  	</div>
                 </div>
           	</div>
           	<div class="modal-footer">

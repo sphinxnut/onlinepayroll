@@ -3,17 +3,13 @@
 
 	function generateRow($from, $to, $conn, $deduction){
 		$contents = '';
-		
-	
+	 	
 		$sql = "SELECT *, sum(num_hr) AS total_hr, attendance.employee_id AS empid FROM attendance LEFT JOIN employees ON employees.id=attendance.employee_id LEFT JOIN position ON position.id=employees.position_id WHERE date BETWEEN '$from' AND '$to' GROUP BY attendance.employee_id ORDER BY employees.lastname ASC, employees.firstname ASC";
 
 		$query = $conn->query($sql);
 		$total = 0;
 		while($row = $query->fetch_assoc()){
 			$empid = $row['empid'];
-
-			// $deduction = $deduction  + ($row['additonal_deduction_rate'] * 3);
-			$deduction = $row['SSS'] + $row['Philhealth'] + $row['Pagibig'];
                       
 	      	$casql = "SELECT *, SUM(amount) AS cashamount FROM cashadvance WHERE employee_id='$empid' AND date_advance BETWEEN '$from' AND '$to'";
 	      
@@ -74,7 +70,7 @@
     $pdf->AddPage();  
     $content = '';  
     $content .= '
-      	<h2 align="center">Jollibee Sto. Tomas Subic</h2>
+      	<h2 align="center">TechSoft IT Solutions</h2>
       	<h4 align="center">'.$from_title." - ".$to_title.'</h4>
       	<table border="1" cellspacing="0" cellpadding="3">  
            <tr>  

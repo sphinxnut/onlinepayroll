@@ -1,17 +1,18 @@
 <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo" style="background-color:#cc0066">
+    <a href="index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>T</b>IT</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>ATTENDANCE</b></span>
+      <span class="logo-lg"><b>ArzelJRZ</b> 2022</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
-    <nav style="background-color:pink" class="navbar navbar-static-top">
+    <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <p style="font-family: Arial black">CAFE CERVEZA EMPLOYEE PAYROLL AND ATTENDANCE SYSTEM</p>
         <span class="sr-only">Toggle navigation</span>
-      </a>
+      </a>  
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">

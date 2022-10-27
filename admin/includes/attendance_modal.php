@@ -35,24 +35,6 @@
                   	</div>
                 </div>
                 <div class="form-group">
-                  	<label for="break_out" class="col-sm-3 control-label">Break Out</label>
-
-                  	<div class="col-sm-9">
-                  		<div class="bootstrap-timepicker">
-                    		<input type="text" class="form-control timepicker" id="break_out" name="break_out">
-                    	</div>
-                  	</div>
-                </div>
-                <div class="form-group">
-                  	<label for="break_in" class="col-sm-3 control-label">Break In</label>
-
-                  	<div class="col-sm-9">
-                  		<div class="bootstrap-timepicker">
-                    		<input type="text" class="form-control timepicker" id="break_in" name="break_in">
-                    	</div>
-                  	</div>
-                </div>
-                <div class="form-group">
                   	<label for="time_out" class="col-sm-3 control-label">Time Out</label>
 
                   	<div class="col-sm-9">
@@ -98,24 +80,6 @@
                   	<div class="col-sm-9">
                   		<div class="bootstrap-timepicker">
                     		<input type="text" class="form-control timepicker" id="edit_time_in" name="edit_time_in">
-                    	</div>
-                  	</div>
-                </div>
-                <div class="form-group">
-                  	<label for="edit_break_out" class="col-sm-3 control-label">Break Out</label>
-
-                  	<div class="col-sm-9">
-                  		<div class="bootstrap-timepicker">
-                    		<input type="text" class="form-control timepicker" id="edit_break_out" name="edit_break_out">
-                    	</div>
-                  	</div>
-                </div>
-                <div class="form-group">
-                  	<label for="edit_break_in" class="col-sm-3 control-label">Break In</label>
-
-                  	<div class="col-sm-9">
-                  		<div class="bootstrap-timepicker">
-                    		<input type="text" class="form-control timepicker" id="edit_break_in" name="edit_break_in">
                     	</div>
                   	</div>
                 </div>

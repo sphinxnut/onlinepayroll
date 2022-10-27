@@ -6,14 +6,10 @@
 		$date = $_POST['edit_date'];
 		$time_in = $_POST['edit_time_in'];
 		$time_in = date('H:i:s', strtotime($time_in));
-		$break_out = $_POST['edit_break_out'];
-		$break_out = date('H:i:s', strtotime($break_out));
-		$break_in = $_POST['edit_break_in'];
-		$break_in = date('H:i:s', strtotime($break_in));
 		$time_out = $_POST['edit_time_out'];
 		$time_out = date('H:i:s', strtotime($time_out));
 
-		$sql = "UPDATE attendance SET date = '$date', time_in = '$time_in', break_out = '$break_out', break_in = '$break_in', time_out = '$time_out' WHERE id = '$id'";
+		$sql = "UPDATE attendance SET date = '$date', time_in = '$time_in', time_out = '$time_out' WHERE id = '$id'";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Attendance updated successfully';
 
@@ -34,21 +30,11 @@
 				$time_in = $srow['time_in'];
 			}
 
-			if($srow['break_out'] > $break_out){
-				$break_out = $srow['break_out'];
-			}
-
-			if($srow['break_in'] < $break_in){
-				$break_in = $srow['break_in'];
-			}
-
 			if($srow['time_out'] < $time_out){
 				$time_out = $srow['time_out'];
 			}
 
 			$time_in = new DateTime($time_in);
-			$break_out = new DateTime($break_out);
-			$break_in = new DateTime($break_in);
 			$time_out = new DateTime($time_out);
 			$interval = $time_in->diff($time_out);
 			$hrs = $interval->format('%h');

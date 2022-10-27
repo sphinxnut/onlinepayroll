@@ -10,12 +10,6 @@
 		$gender = $_POST['gender'];
 		$position = $_POST['position'];
 		$schedule = $_POST['schedule'];
-		$SSS = $_POST['SSS'];
-		$Pagibig = $_POST['Pagibig'];
-		$Philhealth = $_POST['Philhealth'];
-
-		// echo '<script type="text/javascript">alert("' . $SSS . '")</script>';
-
 		$filename = $_FILES['photo']['name'];
 		if(!empty($filename)){
 			move_uploaded_file($_FILES['photo']['tmp_name'], '../images/'.$filename);	
@@ -30,8 +24,8 @@
 			$numbers .= $i;
 		}
 		$employee_id = substr(str_shuffle($letters), 0, 3).substr(str_shuffle($numbers), 0, 9);
-		//Update added schedule_updated_on column
-		$sql = "INSERT INTO employees (employee_id, firstname, lastname, address, birthdate, contact_info, gender, position_id, schedule_id, schedule_updated_on, SSS, Pagibig, Philhealth, photo, created_on) VALUES ('$employee_id', '$firstname', '$lastname', '$address', '$birthdate', '$contact', '$gender', '$position', '$schedule', NOW(), '$SSS', '$Pagibig', '$Philhealth', '$filename', NOW())";
+		//
+		$sql = "INSERT INTO employees (employee_id, firstname, lastname, address, birthdate, contact_info, gender, position_id, schedule_id, photo, created_on) VALUES ('$employee_id', '$firstname', '$lastname', '$address', '$birthdate', '$contact', '$gender', '$position', '$schedule', '$filename', NOW())";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Employee added successfully';
 		}

@@ -1,6 +1,6 @@
 <?php include 'includes/session.php'; ?>
 <?php include 'includes/header.php'; ?>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-black sidebar-mini">
 <div class="wrapper">
 
   <?php include 'includes/navbar.php'; ?>
@@ -52,7 +52,6 @@
               <table id="example1" class="table table-bordered">
                 <thead>
                   <th>Position Title</th>
-                  <!-- <th>Additional Deductions Rate</th> -->
                   <th>Rate per Hour</th>
                   <th>Tools</th>
                 </thead>
@@ -64,7 +63,6 @@
                       echo "
                         <tr>
                           <td>".$row['description']."</td>
-                        
                           <td>".number_format($row['rate'], 2)."</td>
                           <td>
                             <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
@@ -74,7 +72,6 @@
                       ";
                     }
                   ?>
-                    <!-- <td>".number_format($row['additonal_deduction_rate'], 2)."</td> -->
                 </tbody>
               </table>
             </div>
@@ -114,7 +111,6 @@ function getRow(id){
     success: function(response){
       $('#posid').val(response.id);
       $('#edit_title').val(response.description);
-      $('#edit_deduction').val(response.additonal_deduction_rate);
       $('#edit_rate').val(response.rate);
       $('#del_posid').val(response.id);
       $('#del_position').html(response.description);

@@ -6,10 +6,6 @@
 		$date = $_POST['date'];
 		$time_in = $_POST['time_in'];
 		$time_in = date('H:i:s', strtotime($time_in));
-		$break_out = $_POST['break_out'];
-		$break_out = date('H:i:s', strtotime($break_out));
-		$break_in = $_POST['break_in'];
-		$break_in = date('H:i:s', strtotime($break_in));
 		$time_out = $_POST['time_out'];
 		$time_out = date('H:i:s', strtotime($time_out));
 
@@ -37,7 +33,7 @@
 				$scherow = $squery->fetch_assoc();
 				$logstatus = ($time_in > $scherow['time_in']) ? 0 : 1;
 				//
-				$sql = "INSERT INTO attendance (employee_id, date, time_in, break_out, break_in, time_out, status) VALUES ('$emp', '$date', '$time_in', '$break_out', '$break_in' '$time_out', '$logstatus')";
+				$sql = "INSERT INTO attendance (employee_id, date, time_in, time_out, status) VALUES ('$emp', '$date', '$time_in', '$time_out', '$logstatus')";
 				if($conn->query($sql)){
 					$_SESSION['success'] = 'Attendance added successfully';
 					$id = $conn->insert_id;
@@ -50,21 +46,11 @@
 						$time_in = $srow['time_in'];
 					}
 
-					if($srow['break_out'] > $break_out){
-						$break_out = $srow['break_out'];
-					}
-
-					if($srow['break_in'] < $break_in){
-						$break_in = $srow['break_in'];
-					}
-
 					if($srow['time_out'] < $time_out){
 						$time_out = $srow['time_out'];
 					}
 
 					$time_in = new DateTime($time_in);
-					$break_out = new DateTime($break_out);
-					$break_in = new DateTime($break_in);
 					$time_out = new DateTime($time_out);
 					$interval = $time_in->diff($time_out);
 					$hrs = $interval->format('%h');

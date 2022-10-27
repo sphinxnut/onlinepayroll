@@ -7,23 +7,26 @@
     $year = $_GET['year'];
   }
 ?>
+<style>
+  
+</style>
 <?php include 'includes/header.php'; ?>
-<body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
+<body class="hold-transition skin-black sidebar-mini">
+<div class="wrapper ">
 
   	<?php include 'includes/navbar.php'; ?>
   	<?php include 'includes/menubar.php'; ?>
 
   <!-- Content Wrapper. Contains page content -->
-  <div style="background-color:black" class="content-wrapper">
+  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1 style="color:white">
+      <h1>
         Dashboard
       </h1>
       <ol class="breadcrumb">
-        <li ><a href="#" style="color:white"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li style="color:white" class="active">Dashboard</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
       </ol>
     </section>
 
@@ -84,18 +87,9 @@
 
                 $sql = "SELECT * FROM attendance WHERE status = 1";
                 $query = $conn->query($sql);
-
-              
                 $early = $query->num_rows;
                 
-                // Update Check if both value return 0
-                if($early == $total){
-                  $percentage = 0;
-                }else{
-                  $percentage = ($early/$total)*100;
-
-                }
-
+                $percentage = ($early/$total)*100;
 
                 echo "<h3>".number_format($percentage, 2)."<sup style='font-size: 20px'>%</sup></h3>";
               ?>
@@ -151,9 +145,9 @@
         <!-- ./col -->
       </div>
       <!-- /.row -->
-      <div style="background-color:pink" class="row">
+      <div class="row">
         <div class="col-xs-12">
-          <div style="background-color:pink" class="box">
+          <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">Monthly Attendance Report</h3>
               <div class="box-tools pull-right">

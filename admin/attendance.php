@@ -1,6 +1,6 @@
 <?php include 'includes/session.php'; ?>
 <?php include 'includes/header.php'; ?>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-black sidebar-mini">
 <div class="wrapper">
 
   <?php include 'includes/navbar.php'; ?>
@@ -56,10 +56,7 @@
                   <th>Employee ID</th>
                   <th>Name</th>
                   <th>Time In</th>
-                  <th>Break Out</th>
-                  <th>Break In</th>
                   <th>Time Out</th>
-                  <th>Overtime Working Hours</th>
                   <th>Tools</th>
                 </thead>
                 <tbody>
@@ -68,7 +65,6 @@
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       $status = ($row['status'])?'<span class="label label-warning pull-right">ontime</span>':'<span class="label label-danger pull-right">late</span>';
-                      $ot_status = ($row['ot_hr'])?'<span class="label label-danger pull-right">overtime</span>':'<span class="label label-warning pull-right">ontime</span>' ;
                       echo "
                         <tr>
                           <td class='hidden'></td>
@@ -76,10 +72,7 @@
                           <td>".$row['empid']."</td>
                           <td>".$row['firstname'].' '.$row['lastname']."</td>
                           <td>".date('h:i A', strtotime($row['time_in'])).$status."</td>
-                          <td>".date('h:i A', strtotime($row['break_out']))."</td>  
-                          <td>".date('h:i A', strtotime($row['break_in']))."</td>
-                          <td>".date('h:i A', strtotime($row['time_out'])).$ot_status."</td>
-                          <td>".$row['ot_hr']."</td>
+                          <td>".date('h:i A', strtotime($row['time_out']))."</td>
                           <td>
                             <button class='btn btn-success btn-sm btn-flat edit' data-id='".$row['attid']."'><i class='fa fa-edit'></i> Edit</button>
                             <button class='btn btn-danger btn-sm btn-flat delete' data-id='".$row['attid']."'><i class='fa fa-trash'></i> Delete</button>
@@ -128,8 +121,6 @@ function getRow(id){
       $('#datepicker_edit').val(response.date);
       $('#attendance_date').html(response.date);
       $('#edit_time_in').val(response.time_in);
-      $('#edit_break_out').val(response.break_out);
-      $('#edit_break_in').val(response.break_in);
       $('#edit_time_out').val(response.time_out);
       $('#attid').val(response.attid);
       $('#employee_name').html(response.firstname+' '+response.lastname);

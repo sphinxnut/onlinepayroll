@@ -5,7 +5,7 @@
   $range_from = date('m/d/Y', strtotime('-30 day', strtotime($range_to)));
 ?>
 <?php include 'includes/header.php'; ?>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-black sidebar-mini">
 <div class="wrapper">
 
   <?php include 'includes/navbar.php'; ?>
@@ -77,15 +77,9 @@
                 <tbody>
                   <?php
                     $sql = "SELECT *, SUM(amount) as total_amount FROM deductions";
-                    
                     $query = $conn->query($sql);
                     $drow = $query->fetch_assoc();
                     $deduction = $drow['total_amount'];
-                    // echo $sql;
-                    // foreach( $deduction as $item ) {
-                    //   echo $item;
-                    // }
-
   
                     
                     $to = date('Y-m-d');
@@ -96,7 +90,6 @@
                       $ex = explode(' - ', $range);
                       $from = date('Y-m-d', strtotime($ex[0]));
                       $to = date('Y-m-d', strtotime($ex[1]));
-
                     }
 
                     $sql = "SELECT *, SUM(num_hr) AS total_hr, attendance.employee_id AS empid FROM attendance LEFT JOIN employees ON employees.id=attendance.employee_id LEFT JOIN position ON position.id=employees.position_id WHERE date BETWEEN '$from' AND '$to' GROUP BY attendance.employee_id ORDER BY employees.lastname ASC, employees.firstname ASC";
@@ -105,22 +98,13 @@
                     $total = 0;
                     while($row = $query->fetch_assoc()){
                       $empid = $row['empid'];
-
-                      // echo '<script type="text/javascript">alert("'.$row['SSS'].'");</script>';
-
-                      //Para may additional deduction depending sa ilalagay don sa position so kung programmer additional deduction is 5 pesos, therefore 5x3=15. 
-                      // Bakit 3? kasi tatlo yung philhealth,sss,pagibig.
-                      //Nilagay ko sa part na to para makuha yung $row['additonal_deduction_rate'] na value
-                      //Formula:
-          
-                      // $deduction = $deduction  + ($row['additonal_deduction_rate'] * 3);
-                      $deduction = $row['SSS'] + $row['Philhealth'] + $row['Pagibig'];
-                     
+                      
                       $casql = "SELECT *, SUM(amount) AS cashamount FROM cashadvance WHERE employee_id='$empid' AND date_advance BETWEEN '$from' AND '$to'";
-                      $caquery = $conn->query($casql);          
+                      
+                      $caquery = $conn->query($casql);
                       $carow = $caquery->fetch_assoc();
-                      $cashadvance = $carow['cashamount'];                
-           
+                      $cashadvance = $carow['cashamount'];
+
                       $gross = $row['rate'] * $row['total_hr'];
                       $total_deduction = $deduction + $cashadvance;
                       $net = $gross - $total_deduction;
