@@ -1,2 +1,5 @@
 rebuild to qr code attendance with payroll
-![logo](images/logo.png)
+
+<p align="center">
+  <img src="images/logo.png" width="350" title="hover text">
+</p>
