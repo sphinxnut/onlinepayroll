@@ -1,4 +1,4 @@
-How to run the Hospital Management System (HMS) Project
+running payroll in project
 
 1. Download the zip file
 
