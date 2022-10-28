@@ -1,2 +1,0 @@
-CAFE CERVEZA ATTENDANCE AND PAYROLL SYSTEM
-admin login: username/password = arzel/arzel
