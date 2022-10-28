@@ -1,2 +1,2 @@
 rebuild to qr code attendance with payroll
-![VXUG logo](logo.png)
+![logo](images/logo.png)
