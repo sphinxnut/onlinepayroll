@@ -1,8 +1,8 @@
-How to run the Hospital Management System (HMS) Project
+`running payroll Project`
 
 1. Download the zip file
 
-2. Extract the file and copy hospital folder
+2. Extract the file and copy payroll folder
 
 3.Paste inside root directory(for xampp xampp/htdocs)
 
