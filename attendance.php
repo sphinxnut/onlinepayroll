@@ -7,7 +7,7 @@ $output = array('error'=>false);
 
 		$employee = $_POST['employee'];
 		$status = $_POST['status'];
-
+		$employee_ID = $_POST['employee_id'];
 		$sql = "SELECT * FROM employees WHERE employee_id = '$employee'";
 		$query = $conn->query($sql);
 
@@ -106,7 +106,7 @@ $output = array('error'=>false);
 		}
 		else{
 			$output['error'] = true;
-			$output['message'] = 'Employee ID not found';
+			$output['message'] = 'Employee ID not found'.'$employee_ID';
 		}
 		
 	}

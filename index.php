@@ -1,5 +1,6 @@
 <?php session_start(); ?>
 <?php include 'header.php'; ?>
+<head>
 <style>
 	body{
 		background-color: #141414;  
@@ -13,7 +14,13 @@
     color: white;
     font-size: 20px;
   }
+  #divvideo{
+			 box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.1);
+		}
+  
 </style>
+		<script type="text/javascript" src="js/instascan.min.js"></script>
+</head>
   <h3><img src="images/1.png" class="ok" height="130" width="400"></h3>  
   	<div class="login-logo">
   		<p class="p1" id="date"></p>
@@ -22,7 +29,7 @@
   <div class="login-box">
 <body>
   	<div class="login-box-body">
-    	<h4 class="login-box-msg">Enter Employee ID</h4>
+    	<!-- <h4 class="login-box-msg">Enter Employee ID</h4> -->
 
     	<form id="attendance">
           <div class="form-group">
@@ -32,14 +39,36 @@
             </select>
           </div>
       		<div class="form-group has-feedback">
-        		<input type="text" class="form-control input-lg" id="employee" name="employee" required>
+        		<!-- <input type="text" class="form-control input-lg" id="employee" name="employee" required> -->
         		<span class="glyphicon glyphicon-calendar form-control-feedback"></span>
       		</div>
-      		<div class="row">
-    			<div class="col-xs-4">
+          <center><p class="login-box-msg"> <i class="glyphicon glyphicon-camera"></i> TAP HERE</p></center>
+              <div id="divvideo">
+			       <video id="preview" width="300" height="261" style="border-radius:10px;"></video> <br> <br>
+             	<?php
+					if(isset($_SESSION['error'])){
+					  echo "
+						<div class='alert alert-danger alert-dismissible' style='background:red;color:#fff'>
+						  <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+						  <h4><i class='icon fa fa-warning'></i> Error!</h4>
+						  ".$_SESSION['error']."
+						</div>
+					  ";
+					  unset($_SESSION['error']);
+					}
+					if(isset($_SESSION['success'])){
+					  echo "
+						<div class='alert alert-success alert-dismissible' style='background:green;color:#fff'>
+						  <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+						  <h4><i class='icon fa fa-check'></i> Success!</h4>
+						  ".$_SESSION['success']."
+						</div>
+					  ";
+					  unset($_SESSION['success']);
+					}
+				  ?>
+              </div>
           			<button type="submit" class="btn btn-primary btn-block btn-flat" name="signin"><i class="fa fa-sign-in"></i> Sign In</button>
-        		</div>
-      		</div>
 </form>
   	</div>
 
@@ -54,8 +83,24 @@
     </div>
   		
 </div>
+	<script>
+           let scanner = new Instascan.Scanner({ video: document.getElementById('preview')});
+           Instascan.Camera.getCameras().then(function(cameras){
+               if(cameras.length > 0 ){
+                   scanner.start(cameras[0]);
+               } else{
+                   alert('No cameras found');
+               }
 
-	
+           }).catch(function(e) {
+               console.error(e);
+           });
+
+           scanner.addListener('scan',function(c){
+               document.getElementById('text').value=c;
+               document.forms[0].submit();
+           });
+        </script>
 <?php include 'scripts.php' ?>
 <script type="text/javascript">
 $(function() {
