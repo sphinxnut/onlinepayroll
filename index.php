@@ -39,34 +39,12 @@
             </select>
           </div>
       		<div class="form-group has-feedback">
-        		<!-- <input type="text" class="form-control input-lg" id="employee" name="employee" required> -->
+        		 <input type="text" class="form-control input-lg" id="employee" name="employee" required> 
         		<span class="glyphicon glyphicon-calendar form-control-feedback"></span>
       		</div>
           <center><p class="login-box-msg"> <i class="glyphicon glyphicon-camera"></i> TAP HERE</p></center>
               <div id="divvideo">
 			       <video id="preview" width="300" height="261" style="border-radius:10px;"></video> <br> <br>
-             	<?php
-					if(isset($_SESSION['error'])){
-					  echo "
-						<div class='alert alert-danger alert-dismissible' style='background:red;color:#fff'>
-						  <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-						  <h4><i class='icon fa fa-warning'></i> Error!</h4>
-						  ".$_SESSION['error']."
-						</div>
-					  ";
-					  unset($_SESSION['error']);
-					}
-					if(isset($_SESSION['success'])){
-					  echo "
-						<div class='alert alert-success alert-dismissible' style='background:green;color:#fff'>
-						  <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-						  <h4><i class='icon fa fa-check'></i> Success!</h4>
-						  ".$_SESSION['success']."
-						</div>
-					  ";
-					  unset($_SESSION['success']);
-					}
-				  ?>
               </div>
           			<button type="submit" class="btn btn-primary btn-block btn-flat" name="signin"><i class="fa fa-sign-in"></i> Sign In</button>
 </form>

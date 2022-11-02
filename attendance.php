@@ -1,13 +1,13 @@
 <?php
-$output = array('error'=>false);
 	if(isset($_POST['employee'])){
+		$output = array('error'=>false);
 
 		include 'conn.php';
 		include 'timezone.php';
 
 		$employee = $_POST['employee'];
 		$status = $_POST['status'];
-		$employee_ID = $_POST['employee_id'];
+
 		$sql = "SELECT * FROM employees WHERE employee_id = '$employee'";
 		$query = $conn->query($sql);
 
@@ -106,7 +106,7 @@ $output = array('error'=>false);
 		}
 		else{
 			$output['error'] = true;
-			$output['message'] = 'Employee ID not found'.'$employee_ID';
+			$output['message'] = 'Employee ID not found';
 		}
 		
 	}
