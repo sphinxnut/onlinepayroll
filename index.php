@@ -16,7 +16,12 @@
   }
   #divvideo{
 			 box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.1);
+
 		}
+video {
+  width: 100%;
+  height: auto;
+}
   
 </style>
 		<script type="text/javascript" src="js/instascan.min.js"></script>
@@ -37,30 +42,30 @@
               <option value="in">Time In</option>
               <option value="out">Time Out</option>
             </select>
-          </div>
-      		<div class="form-group has-feedback">
-        		 <input type="text" class="form-control input-lg" id="employee" name="employee" required> 
-        		<span class="glyphicon glyphicon-calendar form-control-feedback"></span>
-      		</div>
-          <center><p class="login-box-msg"> <i class="glyphicon glyphicon-camera"></i> TAP HERE</p></center>
+  </div>
+          <center><p class="login-box-msg"> <i class="glyphicon glyphicon-camera"></i> PLACE YOUR QR CODE HERE</p></center>
               <div id="divvideo">
-			       <video id="preview" width="300" height="261" style="border-radius:10px;"></video> <br> <br>
+			       <video id="preview" width="300" height="300" style="border-radius:10px;"></video>
               </div>
-          			<button type="submit" class="btn btn-primary btn-block btn-flat" name="signin"><i class="fa fa-sign-in"></i> Sign In</button>
+               <form action="attendance.php" method="post" class="form-horizontal" style="border-radius: 5px;padding:10px;background:#fff;" id="divvideo">
+                     <i class="glyphicon glyphicon-qrcode"></i> <label>SCAN QR CODE</label> <p id="time"></p>
+                    <input type="text" name="employee" id="text" placeholder="scan qrcode" class="form-control" required  autofocus>
+                    <button type="submit" class="btn btn-primary btn-block btn-flat" id="submit" value="submit"> <i class="fa fa-sign-in"></i> submit</button>
+                  </form>
+      		</div>
 </form>
-  	</div>
-
-		<div class="alert alert-success alert-dismissible mt20 text-center" style="display:none;">
+<!-- MESSAGE ALERT -->
+<div class="alert alert-success alert-dismissible mt20 text-center" style="display:none;">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       <span class="result"><i class="icon fa fa-check"></i> <span class="message"></span></span>
     </div>
-
 		<div class="alert alert-danger alert-dismissible mt20 text-center" style="display:none;">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       <span class="result"><i class="icon fa fa-warning"></i> <span class="message"></span></span>
     </div>
-  		
+  	</div>
 </div>
+
 	<script>
            let scanner = new Instascan.Scanner({ video: document.getElementById('preview')});
            Instascan.Camera.getCameras().then(function(cameras){
@@ -79,6 +84,7 @@
                document.forms[0].submit();
            });
         </script>
+        
 <?php include 'scripts.php' ?>
 <script type="text/javascript">
 $(function() {

@@ -1,4 +1,5 @@
 <?php
+
 	if(isset($_POST['employee'])){
 		$output = array('error'=>false);
 
@@ -32,7 +33,7 @@
 					$squery = $conn->query($sql);
 					$srow = $squery->fetch_assoc();
 					$logstatus = ($lognow > $srow['time_in']) ? 0 : 1;
-					//
+					
 					$sql = "INSERT INTO attendance (employee_id, date, time_in, status) VALUES ('$id', '$date_now', NOW(), '$logstatus')";
 					if($conn->query($sql)){
 						$output['message'] = 'Time in: '.$row['firstname'].' '.$row['lastname'];
