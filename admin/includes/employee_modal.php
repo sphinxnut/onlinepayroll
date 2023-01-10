@@ -1,24 +1,23 @@
+<?php
+include "./admin/employee.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script src="/node_modules/html2canvas/dist/html2canvas.js"></script>
+  <script src="/node_modules/html2canvas/dist/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <style>
-  .qr-code {
-    /*    border-top: 0.5rem solid #8F8073;
-    border-right: 0.5rem solid #8F8073;
-    border-bottom: 1rem solid #8F8073; */
-    border-radius: 0.5rem;
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
-    /*     border-left: 0.5rem solid #8F8073; */
-    /*  background-color: #8F8073; */
-    text-align: center;
+  qr-code {
+    background-color: pink;
   }
 </style>
 
@@ -265,7 +264,9 @@
       </div>
     </div>
   </div>
+
   <!-- Generate qr codes -->
+
   <div class="modal fade" id="Generate">
 
     <div class="modal-dialog">
@@ -280,18 +281,69 @@
             <input type="hidden" class="empid" name="id">
             <div class="qr-code text-center">
               <p>QR CODE</p>
-              <h2 class="employee_id"></h2>
+              <h2 class="del_employee_name" style="font-family: arial black;"></h2>
+              <!--  <h3 id="employee_id"></h3> -->
+              <img class="codeimg" height="200px" width="200px">
             </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-          <button type="submit" class="btn btn-primary btn-flat" name="generate"><i class="fa fa-download"></i> Download</button>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+              <button type="button" class="btn btn-primary btn-flat" name="download"><i class="fa fa-download"></i>download</button>
+
           </form>
+          <!-- FIRST EXPIREMENT -->
+          <?php
+          if (array_key_exists('download', $_POST)) {
+            $ch = curl_init('https://chart.googleapis.com/chart?cht=qr&chl=${response.employee_id}&choe=UTF-8&chs=500x500');
+            $fp = fopen('qrtemp/qrcode.jpg', 'wb');
+            curl_setopt($ch, CURLOPT_FILE, $fp);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_exec($ch);
+            curl_close($ch);
+            fclose($fp);
+          }
+          ?>
+
+          <!-- SECOND EXPERIMENT -->
+
+          <!--   <script>
+            function mbt() {
+              var elements = document.getElementsByName("download");
+              for (var i = 0; i < elements.length; i++) {
+                if (elements[i].type == 'button') {
+
+                  /* to download the qr code image */
+                  document.querySelector(".qr-code").appendChild();
+
+                  let download_link = document.createElement("a");
+                  download_link.setAttribute("download", "qr_code_linq.png");
+                  download_link.innerText = "Download";
+
+                  download.appendChild(download_link);
+
+                  if (document.querySelector(".qr-code img").getAttribute("src") == null) {
+                    setTimeout(() => {
+                      download_link.setAttribute("href", `${document.querySelector("canvas").toDataURL()}`);
+                    }, 300);
+                  } else {
+                    setTimeout(() => {
+                      download_link.setAttribute("href", `${document.querySelector(".qr-code img").getAttribute("src")}`);
+                    }, 300);
+                  }
+
+                }
+              }
+
+
+            }
+          </script> -->
         </div>
+
       </div>
+
     </div>
     <!--  <div class="qr-code"></div> -->
   </div>
+
   <!-- Update Photo -->
   <div class="modal fade" id="edit_photo">
     <div class="modal-dialog">
@@ -321,6 +373,6 @@
     </div>
   </div>
 </body>
-<script src="../employee_genQR.js"></script>
+<!-- <script src="../downloadQR.js"></script> -->
 
 </html>

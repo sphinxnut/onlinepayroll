@@ -15,4 +15,4 @@ run cafe cerveza payroll project
 7.Run the script http://localhost/onlinepayrollphp/ (frontend)
 
 Login Details
-Login Details for admin : arzel/arzel
+Login Details for admin : arzel/admin

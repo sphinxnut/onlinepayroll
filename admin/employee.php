@@ -1,7 +1,7 @@
 <?php include 'includes/session.php'; ?>
 <?php include 'includes/header.php'; ?>
 
-<body class="hold-transition skin-black sidebar-mini">
+<body class="hold-transition  skin-black sidebar-mini">
   <div class="wrapper">
 
     <?php include 'includes/navbar.php'; ?>
@@ -89,7 +89,9 @@
             </div>
           </div>
         </div>
+
       </section>
+
     </div>
 
     <?php include 'includes/footer.php'; ?>
@@ -128,6 +130,7 @@
         data: {
           id: id
         },
+
         dataType: 'json',
         success: function(response) {
           $('.empid').val(response.empid);
@@ -142,6 +145,7 @@
           $('#gender_val').val(response.gender).html(response.gender);
           $('#position_val').val(response.position_id).html(response.description);
           $('#schedule_val').val(response.schedule_id).html(response.time_in + ' - ' + response.time_out);
+          document.getElementsByClassName('codeimg')[0].setAttribute('src', `https:chart.googleapis.com/chart?cht=qr&chl=${response.employee_id}&choe=UTF-8&chs=500x500`)
 
         }
       });
@@ -149,5 +153,6 @@
   </script>
 </body>
 <script src="./employee_genQR.js"></script>
+
 
 </html>
