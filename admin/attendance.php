@@ -47,13 +47,13 @@
           <div class="col-xs-12">
             <div class="box">
               <div class="box-header with-border">
-                <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> New</a>
+                <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i>
+                  New</a>
               </div>
               <div class="box-body">
                 <table id="example1" class="table table-bordered">
                   <thead>
                     <th class="hidden"></th>
-                    <th>DTR</th>
                     <th>Date</th>
                     <th>Employee ID</th>
                     <th>Name</th>
@@ -70,15 +70,15 @@
                       echo "
                         <tr>
                           <td class='hidden'></td>
-                          <td> <button class='btn btn-link btn-sm mod' data-id='" . $row['attid'] . "' > " . $row['firstname'] . ' ' . $row['lastname'] . " </button></td>
                           <td>" . date('M d, Y', strtotime($row['date'])) . "</td>
                           <td>" . $row['empid'] . "</td>
                           <td>" . $row['firstname'] . ' ' . $row['lastname'] . "</td>
-                          <td>" . date('h:i A', strtotime($row['time_in'])) . $status . "</td>
+                          <td>" . date('h:i A', strtotime($row['time_in'])) . "</td>
                           <td>" . date('h:i A', strtotime($row['time_out'])) . "</td>
                           <td>
                             <button class='btn btn-success btn-sm btn-flat edit' data-id='" . $row['attid'] . "'><i class='fa fa-edit'></i> Edit</button>
                             <button class='btn btn-danger btn-sm btn-flat delete' data-id='" . $row['attid'] . "'><i class='fa fa-trash'></i> Delete</button>
+                            <button class='btn btn-info btn-sm btn-flat dtr' data-id='" . $row['id'] . "'><i class='fa fa-eye'></i> DTR</button>
                           </td>
                         </tr>
                       ";
@@ -98,25 +98,34 @@
   </div>
   <?php include 'includes/scripts.php'; ?>
   <script>
-    $(function() {
-      $('.edit').click(function(e) {
+    $(function () {
+      $('.edit').click(function (e) {
         e.preventDefault();
         $('#edit').modal('show');
         var id = $(this).data('id');
         getRow(id);
       });
 
-      $('.delete').click(function(e) {
+      $('.delete').click(function (e) {
         e.preventDefault();
         $('#delete').modal('show');
         var id = $(this).data('id');
         getRow(id);
       });
-      $('.mod').click(function(e) {
+      $('.dtr').click(function (e) {
         e.preventDefault();
-        $('#mod').modal('show');
         var id = $(this).data('id');
-        getRow(id);
+        $.ajax({
+          type: 'POST',
+          url: 'dtr_row.php',
+          data: {
+            id: id
+          },
+          success: function (response) {
+            $('#dtr').html(response);
+          }
+        });
+        $('#mod').modal('show');
       });
     });
 
@@ -128,7 +137,7 @@
           id: id
         },
         dataType: 'json',
-        success: function(response) {
+        success: function (response) {
           $('#datepicker_edit').val(response.date);
           $('#attendance_date').html(response.date);
           $('#edit_time_in').val(response.time_in);

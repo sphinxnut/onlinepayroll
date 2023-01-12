@@ -6,20 +6,15 @@
 		$username = $_POST['username'];
 		$password = $_POST['password'];
 
-		$sql = "SELECT * FROM admin WHERE username = '$username'";
+		$sql = "SELECT * FROM admin WHERE username = '$username' AND password = '$password'";
 		$query = $conn->query($sql);
-
-		if($query->num_rows < 1){
-			$_SESSION['error'] = 'Cannot find account with the username';
+		
+		if($query->num_rows > 0){
+			$row = $query->fetch_assoc();
+			$_SESSION['admin'] = $row['id'];
 		}
 		else{
-			$row = $query->fetch_assoc();
-			if(password_verify($password, $row['password'])){
-				$_SESSION['admin'] = $row['id'];
-			}
-			else{
-				$_SESSION['error'] = 'Incorrect password';
-			}
+			$_SESSION['error'] = 'Invalid username or password';
 		}
 		
 	}
