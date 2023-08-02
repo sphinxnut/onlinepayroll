@@ -46,6 +46,247 @@ include "./admin/employee.php";
               <div class="col-sm-9">
                 <input type="text" class="form-control" id="lastname" name="lastname" required>
               </div>
+<<<<<<< HEAD
+=======
+            </div>
+            <div class="form-group">
+              <label for="address" class="col-sm-3 control-label">Address</label>
+
+              <div class="col-sm-9">
+                <textarea class="form-control" name="address" id="address"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="datepicker_add" class="col-sm-3 control-label">Birthdate</label>
+
+              <div class="col-sm-9">
+                <div class="date">
+                  <input type="text" class="form-control" id="datepicker_add" name="birthdate">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="contact" class="col-sm-3 control-label">Contact Info</label>
+
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="contact" name="contact">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="gender" class="col-sm-3 control-label">Gender</label>
+
+              <div class="col-sm-9">
+                <select class="form-control" name="gender" id="gender" required>
+                  <option value="" selected>- Select -</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="position" class="col-sm-3 control-label">Position</label>
+
+              <div class="col-sm-9">
+                <select class="form-control" name="position" id="position" required>
+                  <option value="" selected>- Select -</option>
+                  <?php
+                  $sql = "SELECT * FROM position";
+                  $query = $conn->query($sql);
+                  while ($prow = $query->fetch_assoc()) {
+                    echo "
+                              <option value='" . $prow['id'] . "'>" . $prow['description'] . "</option>
+                            ";
+                  }
+                  ?>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="schedule" class="col-sm-3 control-label">Schedule</label>
+
+              <div class="col-sm-9">
+                <select class="form-control" id="schedule" name="schedule" required>
+                  <option value="" selected>- Select -</option>
+                  <?php
+                  $sql = "SELECT * FROM schedules";
+                  $query = $conn->query($sql);
+                  while ($srow = $query->fetch_assoc()) {
+                    echo "
+                              <option value='" . $srow['id'] . "'>" . $srow['time_in'] . ' - ' . $srow['time_out'] . "</option>
+                            ";
+                  }
+                  ?>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="photo" class="col-sm-3 control-label">Photo</label>
+              <div class="col-sm-9">
+                <input type="file" name="photo" id="photo">
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+          <button type="submit" class="btn btn-primary btn-flat" name="add"><i class="fa fa-save"></i> Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit -->
+  <div class="modal fade" id="edit">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"><b><span class="employee_id"></span></b></h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal" method="POST" action="employee_edit.php">
+            <input type="hidden" class="empid" name="id">
+            <div class="form-group">
+              <label for="edit_firstname" class="col-sm-3 control-label">Firstname</label>
+
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="edit_firstname" name="firstname">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="edit_lastname" class="col-sm-3 control-label">Lastname</label>
+
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="edit_lastname" name="lastname">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="edit_address" class="col-sm-3 control-label">Address</label>
+
+              <div class="col-sm-9">
+                <textarea class="form-control" name="address" id="edit_address"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="datepicker_edit" class="col-sm-3 control-label">Birthdate</label>
+
+              <div class="col-sm-9">
+                <div class="date">
+                  <input type="text" class="form-control" id="datepicker_edit" name="birthdate">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="edit_contact" class="col-sm-3 control-label">Contact Info</label>
+
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="edit_contact" name="contact">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="edit_gender" class="col-sm-3 control-label">Gender</label>
+
+              <div class="col-sm-9">
+                <select class="form-control" name="gender" id="edit_gender">
+                  <option selected id="gender_val"></option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="edit_position" class="col-sm-3 control-label">Position</label>
+
+              <div class="col-sm-9">
+                <select class="form-control" name="position" id="edit_position">
+                  <option selected id="position_val"></option>
+                  <?php
+                  $sql = "SELECT * FROM position";
+                  $query = $conn->query($sql);
+                  while ($prow = $query->fetch_assoc()) {
+                    echo "
+                              <option value='" . $prow['id'] . "'>" . $prow['description'] . "</option>
+                            ";
+                  }
+                  ?>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="edit_schedule" class="col-sm-3 control-label">Schedule</label>
+
+              <div class="col-sm-9">
+                <select class="form-control" id="edit_schedule" name="schedule">
+                  <option selected id="schedule_val"></option>
+                  <?php
+                  $sql = "SELECT * FROM schedules";
+                  $query = $conn->query($sql);
+                  while ($srow = $query->fetch_assoc()) {
+                    echo "
+                              <option value='" . $srow['id'] . "'>" . $srow['time_in'] . ' - ' . $srow['time_out'] . "</option>
+                            ";
+                  }
+                  ?>
+                </select>
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+          <button type="submit" class="btn btn-success btn-flat" name="edit"><i class="fa fa-check-square-o"></i> Update</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete -->
+  <div class="modal fade" id="delete">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"><b><span class="employee_id"></span></b></h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal" method="POST" action="employee_delete.php">
+            <input type="hidden" class="empid" name="id">
+            <div class="text-center">
+              <p>DELETE EMPLOYEE</p>
+              <h2 class="bold del_employee_name"></h2>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+          <button type="submit" class="btn btn-danger btn-flat" name="delete"><i class="fa fa-trash"></i> Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Generate qr codes -->
+
+  <div class="modal fade" id="Generate">
+
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title"><b><span class="employee_id"></span></b></h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal" method="POST" action="">
+            <input type="hidden" class="empid" name="id">
+            <div class="qr-code text-center">
+              <p>QR CODE</p>
+              <h2 class="del_employee_name" style="font-family: arial black;"></h2>
+              <!--  <h3 id="employee_id"></h3> -->
+              <img class="codeimg" height="200px" width="200px">
+>>>>>>> 843d8c2f4e0b3b6029f99d585fee760d7f0fcb1d
             </div>
             <div class="form-group">
               <label for="address" class="col-sm-3 control-label">Address</label>
@@ -291,6 +532,7 @@ include "./admin/employee.php";
 
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+<<<<<<< HEAD
               <button type="button" class="btn btn-primary btn-flat save-qrcode" name="download"><i class="fa fa-download"></i>Save</button>
             </div>
           </form>
@@ -337,6 +579,64 @@ include "./admin/employee.php";
 
   <!-- ... Your HTML code ... -->
 
+=======
+              <button type="button" class="btn btn-primary btn-flat" name="download"><i class="fa fa-download"></i>download</button>
+
+          </form>
+          <!-- FIRST EXPIREMENT -->
+          <?php
+          if (array_key_exists('download', $_POST)) {
+            $ch = curl_init('https://chart.googleapis.com/chart?cht=qr&chl=${response.employee_id}&choe=UTF-8&chs=500x500');
+            $fp = fopen('qrtemp/qrcode.jpg', 'wb');
+            curl_setopt($ch, CURLOPT_FILE, $fp);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_exec($ch);
+            curl_close($ch);
+            fclose($fp);
+          }
+          ?>
+
+          <!-- SECOND EXPERIMENT -->
+
+          <!--   <script>
+            function mbt() {
+              var elements = document.getElementsByName("download");
+              for (var i = 0; i < elements.length; i++) {
+                if (elements[i].type == 'button') {
+
+                  /* to download the qr code image */
+                  document.querySelector(".qr-code").appendChild();
+
+                  let download_link = document.createElement("a");
+                  download_link.setAttribute("download", "qr_code_linq.png");
+                  download_link.innerText = "Download";
+
+                  download.appendChild(download_link);
+
+                  if (document.querySelector(".qr-code img").getAttribute("src") == null) {
+                    setTimeout(() => {
+                      download_link.setAttribute("href", `${document.querySelector("canvas").toDataURL()}`);
+                    }, 300);
+                  } else {
+                    setTimeout(() => {
+                      download_link.setAttribute("href", `${document.querySelector(".qr-code img").getAttribute("src")}`);
+                    }, 300);
+                  }
+
+                }
+              }
+
+
+            }
+          </script> -->
+        </div>
+
+      </div>
+
+    </div>
+    <!--  <div class="qr-code"></div> -->
+  </div>
+>>>>>>> 843d8c2f4e0b3b6029f99d585fee760d7f0fcb1d
 
   <!-- Update Photo -->
   <div class="modal fade" id="edit_photo">

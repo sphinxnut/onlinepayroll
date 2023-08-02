@@ -77,8 +77,12 @@
                         <td>
                           <button class="btn btn-success btn-sm edit btn-flat" data-id="<?php echo $row['empid']; ?>"><i class="fa fa-edit"></i> Edit</button>
                           <button class="btn btn-danger btn-sm delete btn-flat" data-id="<?php echo $row['empid']; ?>"><i class="fa fa-trash"></i> Delete</button>
+<<<<<<< HEAD
                           <button class="btn btn-primary btn-sm Generate btn-flat" data-id="<?php echo $row['empid']; ?>"><i class="fa fa-qrcode"></i> Generate</button>
 
+=======
+                          <button class="button btn btn-primary btn-sm Generate btn-flat" data-id="<?php echo $row['empid']; ?>"><i class="fa fa-qrcode"></i> Generate</button>
+>>>>>>> 843d8c2f4e0b3b6029f99d585fee760d7f0fcb1d
                         </td>
                       </tr>
                     <?php
@@ -92,7 +96,11 @@
         </div>
 
       </section>
+<<<<<<< HEAD
       s
+=======
+
+>>>>>>> 843d8c2f4e0b3b6029f99d585fee760d7f0fcb1d
     </div>
 
     <?php include 'includes/footer.php'; ?>
@@ -122,7 +130,10 @@
         getRow(id);
       });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 843d8c2f4e0b3b6029f99d585fee760d7f0fcb1d
     });
 
     function getRow(id) {
@@ -131,7 +142,11 @@
         url: 'employee_row.php',
         data: {
           id: id
+<<<<<<< HEAD
         },  
+=======
+        },
+>>>>>>> 843d8c2f4e0b3b6029f99d585fee760d7f0fcb1d
 
         dataType: 'json',
         success: function(response) {
@@ -147,8 +162,12 @@
           $('#gender_val').val(response.gender).html(response.gender);
           $('#position_val').val(response.position_id).html(response.description);
           $('#schedule_val').val(response.schedule_id).html(response.time_in + ' - ' + response.time_out);
+<<<<<<< HEAD
           $('.codeimg').attr('src', 'https://chart.googleapis.com/chart?cht=qr&chl=' + response.employee_id + '&choe=UTF-8&chs=500x500');
 
+=======
+          document.getElementsByClassName('codeimg')[0].setAttribute('src', `https:chart.googleapis.com/chart?cht=qr&chl=${response.employee_id}&choe=UTF-8&chs=500x500`)
+>>>>>>> 843d8c2f4e0b3b6029f99d585fee760d7f0fcb1d
 
         }
       });

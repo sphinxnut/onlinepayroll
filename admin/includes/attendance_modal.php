@@ -46,8 +46,12 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+<<<<<<< HEAD
 				<button type="submit" class="btn btn-primary btn-flat" name="add"><i class="fa fa-save"></i>
 					Save</button>
+=======
+				<button type="submit" class="btn btn-primary btn-flat" name="add"><i class="fa fa-save"></i> Save</button>
+>>>>>>> 843d8c2f4e0b3b6029f99d585fee760d7f0fcb1d
 				</form>
 			</div>
 		</div>
@@ -96,8 +100,12 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+<<<<<<< HEAD
 				<button type="submit" class="btn btn-success btn-flat" name="edit"><i class="fa fa-check-square-o"></i>
 					Update</button>
+=======
+				<button type="submit" class="btn btn-success btn-flat" name="edit"><i class="fa fa-check-square-o"></i> Update</button>
+>>>>>>> 843d8c2f4e0b3b6029f99d585fee760d7f0fcb1d
 				</form>
 			</div>
 		</div>
@@ -123,12 +131,17 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+<<<<<<< HEAD
 				<button type="submit" class="btn btn-danger btn-flat" name="delete"><i class="fa fa-trash"></i>
 					Delete</button>
+=======
+				<button type="submit" class="btn btn-danger btn-flat" name="delete"><i class="fa fa-trash"></i> Delete</button>
+>>>>>>> 843d8c2f4e0b3b6029f99d585fee760d7f0fcb1d
 				</form>
 			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
 </div>
 <!-- DTR -->
 <div class="modal fade" id="mod">
@@ -144,8 +157,44 @@
 			</div>
 		</div>
 	</div>
+=======
+>>>>>>> 843d8c2f4e0b3b6029f99d585fee760d7f0fcb1d
 </div>
+<!-- DTR -->
+<div class="modal fade" id="mod">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span></button>
+				<h2 class="modal-title">DTR</h2>
+				<h4 class="modal-title"><b><span id="dtr_name"></span></b></h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" method="POST" action="dtr.php">
+					<input type="hidden" id="attid" name="id">
+					<div class="form-group">
+						<label for="" class="col-sm-3 control-label">Date from</label>
+						<div class="col-sm-9">
+							<div class="date">
+								<input type="text" class="form-control" id="datepicker_dtr1" placeholder="from" name="dtr_date">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-3 control-label">Date to</label>
+						<div class="col-sm-9">
+							<div class="date">
+								<input type="text" class="form-control" id="datepicker_dtr2" placeholder="to" name="dtr_date">
+							</div>
+						</div>
+					</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+				<button type="submit" class="btn btn-success btn-flat" name="dtrSubmit"><i class="fa fa-check-square-o"></i> <a href="../dtr.php?attid=<?php echo $row['attid'] ?>"></a>Submit</button>
 
+<<<<<<< HEAD
 <!-- <div class="modal-body">
 	<div class="row">
 		<div class="col-md-3">
@@ -175,3 +224,10 @@
 		<div id="dtr"></div>
 	</div>
 </div> -->
+=======
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+>>>>>>> 843d8c2f4e0b3b6029f99d585fee760d7f0fcb1d

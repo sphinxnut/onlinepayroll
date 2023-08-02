@@ -47,13 +47,21 @@
           <div class="col-xs-12">
             <div class="box">
               <div class="box-header with-border">
+<<<<<<< HEAD
                 <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i>
                   New</a>
+=======
+                <a href="#addnew" data-toggle="modal" class="btn btn-primary btn-sm btn-flat"><i class="fa fa-plus"></i> New</a>
+>>>>>>> 843d8c2f4e0b3b6029f99d585fee760d7f0fcb1d
               </div>
               <div class="box-body">
                 <table id="example1" class="table table-bordered">
                   <thead>
                     <th class="hidden"></th>
+<<<<<<< HEAD
+=======
+                    <th>DTR</th>
+>>>>>>> 843d8c2f4e0b3b6029f99d585fee760d7f0fcb1d
                     <th>Date</th>
                     <th>Employee ID</th>
                     <th>Name</th>
@@ -70,15 +78,26 @@
                       echo "
                         <tr>
                           <td class='hidden'></td>
+<<<<<<< HEAD
                           <td>" . date('M d, Y', strtotime($row['date'])) . "</td>
                           <td>" . $row['empid'] . "</td>
                           <td>" . $row['firstname'] . ' ' . $row['lastname'] . "</td>
                             <td>" . date('h:i A', strtotime($row['time_in'])) . $status . "</td>
+=======
+                          <td> <button class='btn btn-link btn-sm mod' data-id='" . $row['attid'] . "' > " . $row['firstname'] . ' ' . $row['lastname'] . " </button></td>
+                          <td>" . date('M d, Y', strtotime($row['date'])) . "</td>
+                          <td>" . $row['empid'] . "</td>
+                          <td>" . $row['firstname'] . ' ' . $row['lastname'] . "</td>
+                          <td>" . date('h:i A', strtotime($row['time_in'])) . $status . "</td>
+>>>>>>> 843d8c2f4e0b3b6029f99d585fee760d7f0fcb1d
                           <td>" . date('h:i A', strtotime($row['time_out'])) . "</td>
                           <td>
                             <button class='btn btn-success btn-sm btn-flat edit' data-id='" . $row['attid'] . "'><i class='fa fa-edit'></i> Edit</button>
                             <button class='btn btn-danger btn-sm btn-flat delete' data-id='" . $row['attid'] . "'><i class='fa fa-trash'></i> Delete</button>
+<<<<<<< HEAD
                             <button class='btn btn-info btn-sm btn-flat dtr' data-id='" . $row['id'] . "'><i class='fa fa-eye'></i> DTR</button>
+=======
+>>>>>>> 843d8c2f4e0b3b6029f99d585fee760d7f0fcb1d
                           </td>
                         </tr>
                       ";
@@ -112,6 +131,7 @@
         var id = $(this).data('id');
         getRow(id);
       });
+<<<<<<< HEAD
       $('.dtr').click(function(e) {
         e.preventDefault();
         var id = $(this).data('id');
@@ -126,6 +146,13 @@
           }
         });
         $('#mod').modal('show');
+=======
+      $('.mod').click(function(e) {
+        e.preventDefault();
+        $('#mod').modal('show');
+        var id = $(this).data('id');
+        getRow(id);
+>>>>>>> 843d8c2f4e0b3b6029f99d585fee760d7f0fcb1d
       });
     });
 
