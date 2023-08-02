@@ -32,7 +32,7 @@
   </style>
   <script type="text/javascript" src="js/instascan.min.js"></script>
 </head>
-<!-- <h3><img src="images/1.png" class="ok" height="130" width="400"></h3> -->
+<h3><img src="images/1.png" class="ok" height="130" width="400"></h3>
 <div class="login-logo">
   <p class="p1" id="date"></p>
   <p class="p2" id="time" class="bold"></p>
@@ -41,7 +41,7 @@
 
   <body>
     <div class="login-box-body">
-      <!-- <h4 class="login-box-msg">Enter Employee ID</h4> -->
+      <h4 class="login-box-msg">Enter Employee ID</h4>
 
       <form id="attendance">
         <div class="form-group">

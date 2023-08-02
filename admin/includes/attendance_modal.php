@@ -46,12 +46,8 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-<<<<<<< HEAD
 				<button type="submit" class="btn btn-primary btn-flat" name="add"><i class="fa fa-save"></i>
 					Save</button>
-=======
-				<button type="submit" class="btn btn-primary btn-flat" name="add"><i class="fa fa-save"></i> Save</button>
->>>>>>> 843d8c2f4e0b3b6029f99d585fee760d7f0fcb1d
 				</form>
 			</div>
 		</div>
@@ -100,12 +96,8 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-<<<<<<< HEAD
 				<button type="submit" class="btn btn-success btn-flat" name="edit"><i class="fa fa-check-square-o"></i>
 					Update</button>
-=======
-				<button type="submit" class="btn btn-success btn-flat" name="edit"><i class="fa fa-check-square-o"></i> Update</button>
->>>>>>> 843d8c2f4e0b3b6029f99d585fee760d7f0fcb1d
 				</form>
 			</div>
 		</div>
@@ -131,17 +123,12 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-<<<<<<< HEAD
 				<button type="submit" class="btn btn-danger btn-flat" name="delete"><i class="fa fa-trash"></i>
 					Delete</button>
-=======
-				<button type="submit" class="btn btn-danger btn-flat" name="delete"><i class="fa fa-trash"></i> Delete</button>
->>>>>>> 843d8c2f4e0b3b6029f99d585fee760d7f0fcb1d
 				</form>
 			</div>
 		</div>
 	</div>
-<<<<<<< HEAD
 </div>
 <!-- DTR -->
 <div class="modal fade" id="mod">
@@ -157,8 +144,6 @@
 			</div>
 		</div>
 	</div>
-=======
->>>>>>> 843d8c2f4e0b3b6029f99d585fee760d7f0fcb1d
 </div>
 <!-- DTR -->
 <div class="modal fade" id="mod">
@@ -194,7 +179,6 @@
 				<button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
 				<button type="submit" class="btn btn-success btn-flat" name="dtrSubmit"><i class="fa fa-check-square-o"></i> <a href="../dtr.php?attid=<?php echo $row['attid'] ?>"></a>Submit</button>
 
-<<<<<<< HEAD
 <!-- <div class="modal-body">
 	<div class="row">
 		<div class="col-md-3">
@@ -224,10 +208,3 @@
 		<div id="dtr"></div>
 	</div>
 </div> -->
-=======
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
->>>>>>> 843d8c2f4e0b3b6029f99d585fee760d7f0fcb1d
