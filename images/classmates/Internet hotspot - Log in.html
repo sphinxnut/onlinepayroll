@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)http://localhost/hotspot/login.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internet hotspot - Log in</title>
+    <link rel="stylesheet" href="./Internet hotspot - Log in_files/style.css">
+    <link rel="stylesheet" href="./Internet hotspot - Log in_files/style(1).css">
+
+    <style>
+        h1.company{
+            font-family: arial black;
+            color: #ABCDEF;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+   <!--  $(if chap-id) -->
+    <form name="sendin" action="http://localhost/hotspot/$(link-login-only)" method="post" style="display:none">
+        <input type="hidden" name="username">
+        <input type="hidden" name="password">
+        <input type="hidden" name="dst" value="$(link-orig)">
+        <input type="hidden" name="popup" value="true">
+    </form>
+
+    <script src="./Internet hotspot - Log in_files/md5.js.download"></script>
+    <script>
+        function doLogin() {
+            document.sendin.username.value = document.login.username.value;
+            document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+            document.sendin.submit();
+            return false;
+        }
+
+    </script>
+
+   <!--  $(endif) -->
+    <div class="ie-fixMinHeight">
+        <div class="main">
+            <div class="wrap animated fadeIn">
+                <form name="login" action="http://localhost/hotspot/$(link-login-only)" method="post" $(if="" chap-id)="" onsubmit="return doLogin()" $(endif)="">
+                    <input type="hidden" name="dst" value="$(link-orig)">
+                    <input type="hidden" name="popup" value="true">
+                     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<section class="login" id="login">
+    
+     <p><img src="./Internet hotspot - Log in_files/logo.jpg" alt="Avatar" class="avatar"></p>
+     <br>
+<br>
+  <div class="head">
+  <h1 class="company">CAFE CERVEZA WIFI VOUCHER</h1>
+  </div>
+    <!-- two other colors
+
+<body class="lite">
+<body class="dark">
+
+-->
+
+    
+<!-- <center>
+
+</center> -->
+                    <p class="info $(if error)alert$(endif)">
+                       <!--  $(if error == "")Please log in to use the internet hotspot service $(if trial == 'yes') -->
+                        <br>Free trial available, <a href="http://localhost/hotspot/$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">click here</a><!-- .$(endif)
+                        $(endif) -->
+
+                       <!--  $(if error)$(error)$(endif)  -->
+                    </p>
+                    <label>
+                        <img class="ico" src="./Internet hotspot - Log in_files/user.svg" alt="#">
+                        <input name="username" type="text" value="" placeholder="Username" id="username" required="">
+                    </label>
+
+                    <label>
+                        <img class="ico" src="./Internet hotspot - Log in_files/password.svg" alt="#">
+                        <input name="password" type="password" placeholder="Password">
+                    </label>
+
+                    <input type="submit" value="Connect" class="btn-login">
+
+                
+                <p class="info bt"></p>
+
+            </section></form></div>
+        </div>
+    </div>
+
+
+
+</body></html>

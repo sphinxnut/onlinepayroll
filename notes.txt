@@ -12,7 +12,7 @@ run cafe cerveza payroll project
 
 6. Import payrolldb.sql file in folder `db` (given inside the zip package in SQL file folder)
 
-7.Run the script http://localhost/onlinepayrollphp/ (frontend)
+7.Run the script http://localhost/payroll/ (frontend)
 
 Login Details
 Login Details for admin : arzel/arzel

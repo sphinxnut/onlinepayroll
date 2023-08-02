@@ -60,7 +60,7 @@ CREATE TABLE `attendance` (
   `num_hr` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
+--  
 -- Dumping data for table `attendance`
 --
 
