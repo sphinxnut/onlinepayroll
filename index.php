@@ -41,11 +41,8 @@
 
   <body>
     <div class="login-box-body">
-<<<<<<< HEAD
+
       <h4 class="login-box-msg">Enter Employee ID</h4>
-=======
-      <!-- <h4 class="login-box-msg">Enter Employee ID</h4> -->
->>>>>>> 9fba41005b837c2dae454214f225d7c95f93ee13
 
       <form id="attendance">
         <div class="form-group">
@@ -57,7 +54,7 @@
         <center>
           <p class="login-box-msg"> <i class="glyphicon glyphicon-camera"></i> PLACE YOUR QR CODE HERE</p>
         </center>
-<<<<<<< HEAD
+
         <div>
           <video id="preview" width="300" height="300" style="border-radius:10px;"></video>
         </div>
@@ -66,19 +63,6 @@
           <p id="time"></p>
           <input type="text" name="employee" id="text" placeholder="scan qrcode" class="form-control" required autofocus>
           <button type="submit" class="btn btn-primary btn-block btn-flat" id="submit" value="submit"> <i class="fa fa-sign-in"></i> submit</button>
-=======
-        <div id="divvideo">
-          <video id="preview" width="300" height="300" style="border-radius:10px;"></video>
-        </div>
-        <form action="attendance.php" method="post" class="form-horizontal"
-          style="border-radius: 5px;padding:10px;background:#fff;" id="divvideo">
-          <i class="glyphicon glyphicon-qrcode"></i> <label>SCAN QR CODE</label>
-          <p id="time"></p>
-          <input type="text" name="employee" id="text" placeholder="scan qrcode" class="form-control" required
-            autofocus>
-          <button type="submit" class="btn btn-primary btn-block btn-flat" id="submit" value="submit"> <i
-              class="fa fa-sign-in"></i> submit</button>
->>>>>>> 9fba41005b837c2dae454214f225d7c95f93ee13
         </form>
     </div>
     </form>
@@ -91,13 +75,14 @@
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       <span class="result"><i class="icon fa fa-warning"></i> <span class="message"></span></span>
     </div>
-<<<<<<< HEAD
-=======
+
 </div>
->>>>>>> 9fba41005b837c2dae454214f225d7c95f93ee13
+
 </div>
 </div>
 <script type="text/javascript" src="instascan.min.js"></script>
+
+
 <script>
   let scanner = new Instascan.Scanner({
     video: document.getElementById('preview')
@@ -106,41 +91,16 @@
     if (cameras.length > 0) {
       scanner.start(cameras[0]);
 
-<<<<<<< HEAD
     } else {
       alert('No cameras found');
     }
   }).catch(function(e) {
     console.error(e);
   });
-
-  scanner.addListener('scan', function(c) {
-=======
-<script>
-  let scanner = new Instascan.Scanner({
-    video: document.getElementById('preview')
-  });
-  Instascan.Camera.getCameras().then(function (cameras) {
-    if (cameras.length > 0) {
-      scanner.start(cameras[0]);
-    } else {
-      alert('No cameras found');
-    }
-
-  }).catch(function (e) {
-    console.error(e);
-  });
-
-  scanner.addListener('scan', function (c) {
->>>>>>> 9fba41005b837c2dae454214f225d7c95f93ee13
-    document.getElementById('text').value = c;
-    document.forms[0].submit();
-  });
 </script>
 
 <?php include 'scripts.php' ?>
 <script type="text/javascript">
-<<<<<<< HEAD
   $(function() {
     var interval = setInterval(function() {
       var momentNow = moment();
@@ -149,17 +109,7 @@
     }, 100);
 
     $('#attendance').submit(function(e) {
-=======
-  $(function () {
-    var interval = setInterval(function () {
-      var momentNow = moment();
-      $('#date').html(momentNow.format('dddd').substring(0, 3).toUpperCase() + ' - ' + momentNow.format(
-        'MMMM DD, YYYY'));
-      $('#time').html(momentNow.format('hh:mm:ss A'));
-    }, 100);
 
-    $('#attendance').submit(function (e) {
->>>>>>> 9fba41005b837c2dae454214f225d7c95f93ee13
       e.preventDefault();
       var attendance = $(this).serialize();
       $.ajax({
@@ -167,11 +117,9 @@
         url: 'attendance.php',
         data: attendance,
         dataType: 'json',
-<<<<<<< HEAD
+
         success: function(response) {
-=======
-        success: function (response) {
->>>>>>> 9fba41005b837c2dae454214f225d7c95f93ee13
+
           if (response.error) {
             $('.alert').hide();
             $('.alert-danger').show();

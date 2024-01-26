@@ -73,11 +73,11 @@
                           <td>" . date('M d, Y', strtotime($row['date'])) . "</td>
                           <td>" . $row['empid'] . "</td>
                           <td>" . $row['firstname'] . ' ' . $row['lastname'] . "</td>
-<<<<<<< HEAD
+
                             <td>" . date('h:i A', strtotime($row['time_in'])) . $status . "</td>
-=======
+
                           <td>" . date('h:i A', strtotime($row['time_in'])) . "</td>
->>>>>>> 9fba41005b837c2dae454214f225d7c95f93ee13
+
                           <td>" . date('h:i A', strtotime($row['time_out'])) . "</td>
                           <td>
                             <button class='btn btn-success btn-sm btn-flat edit' data-id='" . $row['attid'] . "'><i class='fa fa-edit'></i> Edit</button>
@@ -102,25 +102,24 @@
   </div>
   <?php include 'includes/scripts.php'; ?>
   <script>
-    $(function () {
-      $('.edit').click(function (e) {
+    $(function() {
+      $('.edit').click(function(e) {
         e.preventDefault();
         $('#edit').modal('show');
         var id = $(this).data('id');
         getRow(id);
       });
 
-      $('.delete').click(function (e) {
+      $('.delete').click(function(e) {
         e.preventDefault();
         $('#delete').modal('show');
         var id = $(this).data('id');
         getRow(id);
       });
-<<<<<<< HEAD
+
       $('.dtr').click(function(e) {
-=======
-      $('.dtr').click(function (e) {
->>>>>>> 9fba41005b837c2dae454214f225d7c95f93ee13
+
+
         e.preventDefault();
         var id = $(this).data('id');
         $.ajax({
@@ -129,11 +128,9 @@
           data: {
             id: id
           },
-<<<<<<< HEAD
+
           success: function(response) {
-=======
-          success: function (response) {
->>>>>>> 9fba41005b837c2dae454214f225d7c95f93ee13
+
             $('#dtr').html(response);
           }
         });
@@ -149,7 +146,7 @@
           id: id
         },
         dataType: 'json',
-        success: function (response) {
+        success: function(response) {
           $('#datepicker_edit').val(response.date);
           $('#attendance_date').html(response.date);
           $('#edit_time_in').val(response.time_in);
