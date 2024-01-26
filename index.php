@@ -75,13 +75,11 @@
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       <span class="result"><i class="icon fa fa-warning"></i> <span class="message"></span></span>
     </div>
-
 </div>
 
 </div>
 </div>
-<script type="text/javascript" src="instascan.min.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
   let scanner = new Instascan.Scanner({
@@ -90,26 +88,32 @@
   Instascan.Camera.getCameras().then(function(cameras) {
     if (cameras.length > 0) {
       scanner.start(cameras[0]);
-
     } else {
       alert('No cameras found');
     }
+
   }).catch(function(e) {
     console.error(e);
+  });
+
+  scanner.addListener('scan', function(c) {
+    document.getElementById('text').value = c;
+    document.forms[0].submit();
   });
 </script>
 
 <?php include 'scripts.php' ?>
+
 <script type="text/javascript">
   $(function() {
     var interval = setInterval(function() {
       var momentNow = moment();
-      $('#date').html(momentNow.format('dddd').substring(0, 3).toUpperCase() + ' - ' + momentNow.format('MMMM DD, YYYY'));
+      $('#date').html(momentNow.format('dddd').substring(0, 3).toUpperCase() + ' - ' + momentNow.format(
+        'MMMM DD, YYYY'));
       $('#time').html(momentNow.format('hh:mm:ss A'));
     }, 100);
 
     $('#attendance').submit(function(e) {
-
       e.preventDefault();
       var attendance = $(this).serialize();
       $.ajax({
@@ -117,9 +121,7 @@
         url: 'attendance.php',
         data: attendance,
         dataType: 'json',
-
         success: function(response) {
-
           if (response.error) {
             $('.alert').hide();
             $('.alert-danger').show();
@@ -137,4 +139,4 @@
 </script>
 </body>
 
-</html>
+< /html>
