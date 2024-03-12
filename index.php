@@ -64,6 +64,9 @@
           <input type="text" name="employee" id="text" placeholder="scan qrcode" class="form-control" required autofocus>
           <button type="submit" class="btn btn-primary btn-block btn-flat" id="submit" value="submit"> <i class="fa fa-sign-in"></i> submit</button>
         </form>
+        <br>
+        <button id="viewBestAttendance" class="btn btn-primary btn-block btn-flat">View Best Attendance of the Month</button>
+
     </div>
     </form>
     <!-- MESSAGE ALERT -->
@@ -75,6 +78,7 @@
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       <span class="result"><i class="icon fa fa-warning"></i> <span class="message"></span></span>
     </div>
+
 </div>
 
 </div>
@@ -134,6 +138,12 @@
           }
         }
       });
+    });
+  });
+
+  $(document).ready(function() {
+    $('#viewBestAttendance').click(function() {
+      window.location.href = 'best_attendance.php'; // Change 'best_attendance.php' to the page where you display the best attendance
     });
   });
 </script>

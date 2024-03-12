@@ -74,9 +74,9 @@
                           <td>" . $row['empid'] . "</td>
                           <td>" . $row['firstname'] . ' ' . $row['lastname'] . "</td>
 
-                            <td>" . date('h:i A', strtotime($row['time_in'])) . $status . "</td>
+                            <td>" . date('h:i A', strtotime($row['time_in'])) . "</td>
 
-                          <td>" . date('h:i A', strtotime($row['time_in'])) . "</td>
+             
 
                           <td>" . date('h:i A', strtotime($row['time_out'])) . "</td>
                           <td>

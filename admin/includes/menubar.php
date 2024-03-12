@@ -10,6 +10,7 @@
       <li class="header">MANAGE</li>
 
       <li><a href="attendance.php"><i class="fa fa-calendar"></i> <span>Attendance</span></a></li>
+      <li><a href="attendance_issues.php"><i class="fa fa-exclamation-circle"></i> <span>Attendance Issues</span></a></li>
       <li class="treeview">
         <a href="#">
           <i class="fa fa-users"></i>
@@ -28,6 +29,8 @@
       <li><a href="deduction.php"><i class="fa fa-file-text"></i> Deductions</a></li>
       <li><a href="position.php"><i class="fa fa-suitcase"></i> Positions</a></li>
       <li><a href="emailSender.php"><i class="fa fa-envelope-o"></i> <span>Send Backup </span></a></li>
+      <li><a href="feedback.php"><i class="fa fa-comment-o"></i> <span>Feedbacks</span></a></li>
+      <li><a href="notification.php"><i class="fa fa-bell-o"></i> <span>Notifications </span></a></li>
       <li class="header">PRINTABLES</li>
       <li><a href="payroll.php"><i class="fa fa-files-o"></i> <span>Payroll</span></a></li>
       <li><a href="schedule_employee.php"><i class="fa fa-clock-o"></i> <span>Schedule</span></a></li>
