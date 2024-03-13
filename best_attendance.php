@@ -25,6 +25,18 @@
             margin-bottom: 50px;
             font-size: bold;
         }
+
+        .btn {
+            color: white !important;
+            background-color: #141414 !important;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 400;
+        }
+
+        .btn:hover {
+            color: black !important;
+            background-color: white !important;
+        }
     </style>
 </head>
 
@@ -32,6 +44,8 @@
     <div class="container mt-5">
         <h1>CAFE CERVEZA ATTENDANCE AND PAYROLL SYSTEM</h1>
         <h2>Best Attendance of the Month</h2>
+        <a href="index.php" class="btn mb-3">Back</a>
+
         <table class="table">
             <thead>
                 <tr>

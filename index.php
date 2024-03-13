@@ -37,6 +37,8 @@
   <p class="p1" id="date"></p>
   <p class="p2" id="time" class="bold"></p>
 </div>
+
+
 <div class="login-box">
 
   <body>
@@ -66,6 +68,7 @@
         </form>
         <br>
         <button id="viewBestAttendance" class="btn btn-primary btn-block btn-flat">View Best Attendance of the Month</button>
+        <button id="sendfeedback" class="btn btn-primary btn-block btn-flat">Send Feedback</button>
 
     </div>
     </form>
@@ -144,6 +147,11 @@
   $(document).ready(function() {
     $('#viewBestAttendance').click(function() {
       window.location.href = 'best_attendance.php'; // Change 'best_attendance.php' to the page where you display the best attendance
+    });
+  });
+  $(document).ready(function() {
+    $('#sendfeedback').click(function() {
+      window.location.href = 'login.php'; // Change 'best_attendance.php' to the page where you display the best attendance
     });
   });
 </script>

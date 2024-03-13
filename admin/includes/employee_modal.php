@@ -34,6 +34,13 @@ include "./admin/employee.php";
         <div class="modal-body">
           <form class="form-horizontal" method="POST" action="employee_add.php" enctype="multipart/form-data">
             <div class="form-group">
+              <label for="username" class="col-sm-3 control-label">Username</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="username" name="username">
+              </div>
+
+            </div>
+            <div class="form-group">
               <label for="firstname" class="col-sm-3 control-label">Firstname</label>
 
               <div class="col-sm-9">
@@ -65,7 +72,6 @@ include "./admin/employee.php";
             </div>
             <div class="form-group">
               <label for="contact" class="col-sm-3 control-label">Contact Info</label>
-
               <div class="col-sm-9">
                 <input type="text" class="form-control" id="contact" name="contact">
               </div>
@@ -123,10 +129,15 @@ include "./admin/employee.php";
                 <input type="file" name="photo" id="photo">
               </div>
             </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-          <button type="submit" class="btn btn-primary btn-flat" name="add"><i class="fa fa-save"></i> Save</button>
+            <div class="form-group">
+              <label for="password" class="col-sm-3 control-label">Password</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="password" name="password">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+              <button type="submit" class="btn btn-primary btn-flat" name="add"><i class="fa fa-save"></i> Save</button>
           </form>
         </div>
       </div>

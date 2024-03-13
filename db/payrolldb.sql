@@ -117,6 +117,7 @@ INSERT INTO `deductions` (`id`, `description`, `amount`) VALUES
 
 CREATE TABLE `employees` (
   `id` int(11) NOT NULL,
+  `username` varchar(15) NOT NULL,
   `employee_id` varchar(15) NOT NULL,
   `firstname` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
@@ -128,6 +129,7 @@ CREATE TABLE `employees` (
   `schedule_id` int(11) NOT NULL,
   `photo` varchar(200) NOT NULL,
   `created_on` date NOT NULL
+  `password` varchar(200) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
