@@ -151,7 +151,7 @@
   });
   $(document).ready(function() {
     $('#sendfeedback').click(function() {
-      window.location.href = '.php'; // Change 'best_attendance.php' to the page where you display the best attendance
+      window.location.href = 'login.php'; // Change 'best_attendance.php' to the page where you display the best attendance
     });
   });
 </script>
