@@ -11,6 +11,8 @@
 
       <li><a href="attendance.php"><i class="fa fa-calendar"></i> <span>Attendance</span></a></li>
       <li><a href="attendance_issues.php"><i class="fa fa-exclamation-circle"></i> <span>Attendance Issues</span></a></li>
+      <li><a href="best_attendance.php"><i class="fa fa-star"></i> <span>Best Attendance</span></a></li>
+
       <li class="treeview">
         <a href="#">
           <i class="fa fa-users"></i>

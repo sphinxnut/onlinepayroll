@@ -12,11 +12,11 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Attendance
+                    Best Employee Attendance
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li class="active">Attendance Issues</li>
+                    <li class="active">Attendance</li>
                 </ol>
             </section>
             <!-- Main content -->
@@ -47,37 +47,71 @@
                     <div class="col-xs-12">
                         <div class="box">
                             <div class="box-header with-border">
-                              
+
                             </div>
                             <div class="box-body">
                                 <table id="example1" class="table table-bordered">
                                     <thead>
                                         <th class="hidden"></th>
 
+                                        <th>Rank</th>
                                         <th>Employee ID</th>
-                                        <th>Name</th>
-                                        <th>Time In</th>
-                                        <th>Time Out</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Attendance Count</th>
+                                        <th>Best Attendance GIF</th>
 
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $sql = "SELECT *, employees.employee_id AS empid, attendance.id AS attid FROM attendance LEFT JOIN employees ON employees.id=attendance.employee_id ORDER BY attendance.date DESC, attendance.time_in DESC";
-                                        $query = $conn->query($sql);
-                                        while ($row = $query->fetch_assoc()) {
-                                            $status = ($row['status']) ? '<span class="label label-warning pull-right">ontime</span>' : '<span class="label label-danger pull-right">late</span>';
-                                            echo "
-                        <tr>
-                          <td class='hidden'></td>
-                 
-                          <td>" . $row['empid'] . "</td>
-                          <td>" . $row['firstname'] . ' ' . $row['lastname'] . "</td>
-                            <td>" . date('h:i A', strtotime($row['time_in'])) . $status . "</td>
-                          <td>" . date('h:i A', strtotime($row['time_out'])) . "</td>
-                       
-                        </tr>
-                      ";
+
+
+                                        $sql = "SELECT 
+                            e.employee_id,
+                            e.firstname,
+                            e.lastname,
+                            COUNT(a.id) AS attendance_count
+                        FROM 
+                            employees e
+                        LEFT JOIN
+                            attendance a ON e.id = a.employee_id 
+                            AND MONTH(a.date) = MONTH(CURRENT_DATE()) 
+                            AND YEAR(a.date) = YEAR(CURRENT_DATE()) 
+                            AND a.status = 1
+                        GROUP BY 
+                            e.employee_id
+                        ORDER BY 
+                            attendance_count DESC
+                        LIMIT 3";
+                                        $result = $conn->query($sql);
+
+                                        if ($result->num_rows > 0) {
+                                            $rank = 1;
+                                            // Output data of each row
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<tr>";
+                                                echo '<td>' . $rank . '</td>';
+                                                echo '<td>' . $row["employee_id"] . '</td>';
+                                                echo '<td>' . $row["firstname"] . '</td>';
+                                                echo '<td>' . $row["lastname"] . '</td>';
+                                                echo '<td>' . $row["attendance_count"] . '</td>';
+                                                if ($rank === 1) {
+                                                    echo '<td><div style="width:100%;height:0;padding-bottom:56%;position:relative;"><img src="../images/1avatar.gif" width="65%" height="65%" style="position:absolute"></img></div></td>';
+                                                } else if ($rank === 2) {
+                                                    echo '<td><div style="width:100%;height:0;padding-bottom:56%;position:relative;"><img src="../images/2avatar.gif" width="65%" height="65%" style="position:absolute"></img></div></td>';
+                                                } else if ($rank === 3) {
+                                                    echo '<td><div style="width:100%;height:0;padding-bottom:56%;position:relative;"><img src="../images/3avatar.gif" width="65%" height="65%" style="position:absolute"></img></div></td>';
+                                                } else {
+                                                    echo '<td></td>';
+                                                }
+
+                                                echo "</tr>";
+                                                $rank++;
+                                            }
+                                        } else {
+                                            echo "<tr><td colspan='4'>No data found</td></tr>";
                                         }
+                                        $conn->close();
                                         ?>
                                     </tbody>
                                 </table>

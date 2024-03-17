@@ -49,7 +49,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th colspan="5">Best Attendance for <?php echo date('F Y'); ?></th>
+                    <th colspan="8">Best Attendance for <?php echo date('F Y'); ?></th>
                 </tr>
                 <tr>
                     <th>Rank</th>
@@ -57,6 +57,7 @@
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Attendance Count</th>
+                    <th>Best Attendance GIF</th>
                 </tr>
             </thead>
             <tbody>
@@ -88,11 +89,23 @@
                     // Output data of each row
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<td>" . $rank . "</td>";
-                        echo "<td>" . $row["employee_id"] . "</td>";
-                        echo "<td>" . $row["firstname"] . "</td>";
-                        echo "<td>" . $row["lastname"] . "</td>";
-                        echo "<td>" . $row["attendance_count"] . "</td>";
+                        echo '<td style="font-size: 16px; font-weight: bold; font-family: Arial, sans-serif;">' . $rank . '</td>';
+                        echo '<td style="font-size: 16px; font-weight: bold; font-family: Arial, sans-serif;">' . $row["employee_id"] . '</td>';
+                        echo '<td style="font-size: 16px; font-weight: bold; font-family: Arial, sans-serif;">' . $row["firstname"] . '</td>';
+                        echo '<td style="font-size: 16px; font-weight: bold; font-family: Arial, sans-serif;">' . $row["lastname"] . '</td>';
+                        echo '<td style="font-size: 16px; font-weight: bold; font-family: Arial, sans-serif;">' . $row["attendance_count"] . '</td>';
+
+
+                        if ($rank === 1) {
+                            echo '<td><div style="width:100%;height:0;padding-bottom:56%;position:relative;"><img src="./images/1avatar.gif" width="80%" height="80%" style="position:absolute"></img></div></td>';
+                        } else if ($rank === 2) {
+                            echo '<td><div style="width:100%;height:0;padding-bottom:56%;position:relative;"><img src="./images/2avatar.gif" width="80%" height="80%" style="position:absolute"></img></div></td>';
+                        } else if ($rank === 3) {
+                            echo '<td><div style="width:100%;height:0;padding-bottom:56%;position:relative;"><img src="./images/3avatar.gif" width="80%" height="80%" style="position:absolute"></img></div></td>';
+                        } else {
+                            echo '<td></td>';
+                        }
+
                         echo "</tr>";
                         $rank++;
                     }
