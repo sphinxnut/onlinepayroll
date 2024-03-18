@@ -66,7 +66,7 @@
                                         <?php
 
 
-                                        $sql = "SELECT 
+                                        $sql = "SELECT
                             e.employee_id,
                             e.firstname,
                             e.lastname,

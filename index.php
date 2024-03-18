@@ -51,6 +51,9 @@
           <select class="form-control" name="status">
             <option value="in">Time In</option>
             <option value="out">Time Out</option>
+            <option value="pto">Paid Time Off</option>
+            <option value="shift">Shifting Request</option>
+            <option value="ot">Overtime</option>
           </select>
         </div>
         <center>
@@ -120,7 +123,7 @@
       $('#time').html(momentNow.format('hh:mm:ss A'));
     }, 100);
 
-    $('#attendance').submit(function(e) {
+    /* $('#attendance').submit(function(e) {
       e.preventDefault();
       var attendance = $(this).serialize();
       $.ajax({
@@ -141,7 +144,41 @@
           }
         }
       });
+    }); */
+    $(document).ready(function() {
+      $('#attendance').submit(function(e) {
+        e.preventDefault();
+        var status = $('[name="status"]').val();
+        if (status === "shift") {
+          var employeeId = $('#text').val();
+          window.location.href = 'shift_request.php?employee_id=' + employeeId;
+        } else if (status === "ot") {
+          var employeeId = $('#text').val();
+          window.location.href = 'overtime_request.php?employee_id=' + employeeId;
+        } else {
+          var attendance = $(this).serialize();
+          $.ajax({
+            type: 'POST',
+            url: 'attendance.php',
+            data: attendance,
+            dataType: 'json',
+            success: function(response) {
+              if (response.error) {
+                $('.alert').hide();
+                $('.alert-danger').show();
+                $('.message').html(response.message);
+              } else {
+                $('.alert').hide();
+                $('.alert-success').show();
+                $('.message').html(response.message);
+                $('#employee').val('');
+              }
+            }
+          });
+        }
+      });
     });
+
   });
 
   $(document).ready(function() {
