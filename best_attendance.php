@@ -62,8 +62,12 @@
             </thead>
             <tbody>
                 <?php
-                // Establish database connection
+
                 include 'conn.php';
+                function generateTrophyURL()
+                {
+                    return "https://github-profile-trophy.vercel.app/?username=ryo-ma&theme=onedark&title=Stars";
+                }
 
                 $sql = "SELECT 
                             e.employee_id,
@@ -97,11 +101,12 @@
 
 
                         if ($rank === 1) {
-                            echo '<td><div style="width:100%;height:0;padding-bottom:56%;position:relative;"><img src="./images/1avatar.gif" width="80%" height="80%" style="position:absolute"></img></div></td>';
+                            $trophyURL = generateTrophyURL($row["attendance_count"]);
+                            echo '<td><div style="width:100%;height:0;padding-bottom:56%;position:relative;"><img src="' . $trophyURL . '" style="position:absolute"></img></div></td>';
                         } else if ($rank === 2) {
-                            echo '<td><div style="width:100%;height:0;padding-bottom:56%;position:relative;"><img src="./images/2avatar.gif" width="80%" height="80%" style="position:absolute"></img></div></td>';
+                            echo '<td><div style="width:100%;height:0;padding-bottom:56%;position:relative;"><img src="' . $trophyURL . '" style="position:absolute"></img></div></td>';
                         } else if ($rank === 3) {
-                            echo '<td><div style="width:100%;height:0;padding-bottom:56%;position:relative;"><img src="./images/3avatar.gif" width="80%" height="80%" style="position:absolute"></img></div></td>';
+                            echo '<td><div style="width:100%;height:0;padding-bottom:56%;position:relative;"><img src="' . $trophyURL . '" style="position:absolute"></img></div></td>';
                         } else {
                             echo '<td></td>';
                         }
