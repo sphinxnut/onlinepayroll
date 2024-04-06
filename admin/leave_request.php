@@ -12,11 +12,11 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Shifting Request </h1>
+                    Leave Request </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
                     <li>Employees</li>
-                    <li class="active">Shifting Request</li>
+                    <li class="active">Leave Request</li>
                 </ol>
             </section>
             <!-- Main content -->
@@ -51,7 +51,7 @@
                             </div>
                             <div class="box-body">
                                 <!-- Add the shifting request table here -->
-                                <table id="shifting_request_table" class="table table-bordered">
+                                <table id="leave_request_table" class="table table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Employee ID</th>
