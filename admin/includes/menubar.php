@@ -25,6 +25,7 @@
           <li><a href="employee.php"><i class="fa fa-circle-o"></i> Employee List</a></li>
           <li><a href="overtime_request.php"><i class="fa fa-circle-o"></i> Overtime Request</a></li>
           <li><a href="shifting_request.php"><i class="fa fa-circle-o"></i> Shifting Request</a></li>
+          <li><a href="leave_request.php"><i class="fa fa-circle-o"></i> Leave Request</a></li>
           <li><a href="cashadvance.php"><i class="fa fa-circle-o"></i> Cash Advance</a></li>
           <li><a href="schedule.php"><i class="fa fa-circle-o"></i> Schedules</a></li>
         </ul>

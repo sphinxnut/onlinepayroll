@@ -51,7 +51,7 @@
           <select class="form-control" name="status">
             <option value="in">Time In</option>
             <option value="out">Time Out</option>
-            <option value="pto">Paid Time Off</option>
+            <option value="leave">Leave Request</option>
             <option value="shift">Shifting Request</option>
             <option value="ot">Overtime</option>
           </select>
@@ -84,6 +84,8 @@
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       <span class="result"><i class="icon fa fa-warning"></i> <span class="message"></span></span>
     </div>
+
+
 
 </div>
 
@@ -155,6 +157,9 @@
         } else if (status === "ot") {
           var employeeId = $('#text').val();
           window.location.href = 'overtime_request.php?employee_id=' + employeeId;
+        } else if (status === "leave") {
+          var employeeId = $('#text').val();
+          window.location.href = 'leave_request.php?employee_id=' + employeeId;
         } else {
           var attendance = $(this).serialize();
           $.ajax({
