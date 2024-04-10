@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2024 at 03:46 AM
+-- Generation Time: Apr 10, 2024 at 06:44 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -42,7 +42,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `firstname`, `lastname`, `photo`, `created_on`) VALUES
-(1, 'arzel', 'arzel', 'Arzel John', 'Zolina', 'admin.jpg', '2022-10-20');
+(1, 'arzel', 'arzel', 'admin', '123', 'admin.jpg', '2022-10-20');
 
 -- --------------------------------------------------------
 
@@ -104,7 +104,10 @@ INSERT INTO `attendance` (`id`, `employee_id`, `date`, `time_in`, `status`, `tim
 (148, 7, '2024-03-18', '09:00:00', 1, '17:00:00', 8),
 (154, 10, '2024-03-23', '09:00:00', 1, '17:00:00', 8),
 (162, 5, '2024-03-18', '10:30:14', 0, '10:30:17', 0),
-(163, 10, '2024-03-18', '10:30:39', 0, '10:30:44', 0);
+(163, 10, '2024-03-18', '10:30:39', 0, '10:30:44', 0),
+(164, 10, '2024-03-28', '13:20:17', 0, '13:20:21', 0),
+(169, 12, '2024-04-10', '12:10:52', 0, '12:11:12', 0),
+(178, 6, '2024-04-10', '12:41:00', 0, '12:41:33', 0);
 
 -- --------------------------------------------------------
 
@@ -160,6 +163,7 @@ CREATE TABLE `employees` (
   `username` varchar(255) NOT NULL,
   `firstname` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `address` text NOT NULL,
   `birthdate` date NOT NULL,
   `contact_info` varchar(100) NOT NULL,
@@ -176,14 +180,36 @@ CREATE TABLE `employees` (
 -- Dumping data for table `employees`
 --
 
-INSERT INTO `employees` (`id`, `employee_id`, `username`, `firstname`, `lastname`, `address`, `birthdate`, `contact_info`, `gender`, `position_id`, `schedule_id`, `photo`, `created_on`, `feedback_message`, `password`) VALUES
-(5, 'SWC351682097', '', 'Sulayman', 'Sacandal', 'Tupi, South Cotabato', '2022-09-26', '0909090901', 'Male', 1, 1, 'kuya.jpg', '2022-10-20', '', ''),
-(6, 'MYC690542781', '', 'Zyra', 'Pinggoy', 'Surallah South Cotabato', '2000-10-17', '0915184849', 'Male', 2, 1, 'zyra.jpg', '2022-10-20', 'sasasa', ''),
-(7, 'DIR671295830', '', 'Marjorie', 'Montano', 'Surallah South Cotabato', '2001-08-08', '09154184895', 'Female', 4, 2, 'marjorie.jpg', '2022-10-20', '', ''),
-(8, 'HNO248137905', '', 'Arnie', 'Lastimoso', 'Tupi South Cotabato', '2002-05-09', '09048548497', 'Female', 5, 1, 'arnie.png', '2022-10-20', '', ''),
-(9, 'ZQJ783540162', '', 'Ariel', 'Rivamonte', 'Polomolok South Cotabato', '2000-10-03', '0945215487', 'Male', 1, 2, 'ariel.jpg', '2022-10-20', '', ''),
-(10, 'KHY240756813', 'arzel', 'arzel', 'zolina', 'polomolok', '2023-09-10', '09099932932', 'Male', 1, 1, '', '2023-08-02', 'oki', 'arzel'),
-(11, 'TVB982604137', '123', 'test', 'test', 'polomolok', '2001-03-26', '0921218721', 'Male', 2, 1, 'pia.png', '2024-03-13', 'ssassa', '123');
+INSERT INTO `employees` (`id`, `employee_id`, `username`, `firstname`, `lastname`, `email`, `address`, `birthdate`, `contact_info`, `gender`, `position_id`, `schedule_id`, `photo`, `created_on`, `feedback_message`, `password`) VALUES
+(6, 'MYC690542781', '', 'Zyra', 'Pinggoy', 'ajmixrhyme@gmail.com', 'Surallah South Cotabato', '2000-10-17', '9154138624', 'Male', 2, 1, 'zyra.jpg', '2022-10-20', 'sasasa', ''),
+(7, 'DIR671295830', '', 'Marjorie', 'Montano', '', 'Surallah South Cotabato', '2001-08-08', '9154184895', 'Female', 4, 2, 'marjorie.jpg', '2022-10-20', '', ''),
+(8, 'HNO248137905', '', 'Arnie', 'Lastimoso', '', 'Tupi South Cotabato', '2002-05-09', '9048548497', 'Female', 5, 1, 'arnie.png', '2022-10-20', '', ''),
+(9, 'ZQJ783540162', '', 'Ariel', 'Rivamonte', '', 'Polomolok South Cotabato', '2000-10-03', '945215487', 'Male', 1, 2, 'ariel.jpg', '2022-10-20', '', ''),
+(11, 'TVB982604137', '123', 'test', 'test', '', 'polomolok', '2001-03-26', '921218721', 'Male', 2, 1, 'pia.png', '2024-03-13', 'ssassa', '123'),
+(12, '2020-01431', 'arzeljrz', 'Arzel John', 'Zolina', 'Arzeljrz17@gmail.com', 'polomolok', '2024-04-23', '9090937257', 'Male', 1, 2, 'cobol.png', '2024-04-10', '', '123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `leave_requests`
+--
+
+CREATE TABLE `leave_requests` (
+  `id` int(11) NOT NULL,
+  `employee_id` varchar(15) NOT NULL,
+  `reason` varchar(50) NOT NULL,
+  `leave_date` date NOT NULL,
+  `status` enum('Pending','Approved','Rejected') NOT NULL DEFAULT 'Pending',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `leave_requests`
+--
+
+INSERT INTO `leave_requests` (`id`, `employee_id`, `reason`, `leave_date`, `status`, `created_at`) VALUES
+(1, '2020-01431', 'ako ay gutom', '2024-05-02', 'Rejected', '2024-04-10 03:19:48'),
+(2, 'MYC690542781', 'ako ay', '2024-05-01', 'Approved', '2024-04-10 03:20:50');
 
 -- --------------------------------------------------------
 
@@ -196,8 +222,17 @@ CREATE TABLE `overtime` (
   `employee_id` varchar(15) NOT NULL,
   `hours` double NOT NULL,
   `rate` double NOT NULL,
-  `date_overtime` date NOT NULL
+  `date_overtime` date NOT NULL,
+  `status` enum('Pending','Approved','Rejected') NOT NULL DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `overtime`
+--
+
+INSERT INTO `overtime` (`id`, `employee_id`, `hours`, `rate`, `date_overtime`, `status`) VALUES
+(5, 'MYC690542781', 10.25, 50, '2024-03-19', 'Rejected'),
+(7, '2020-01431', 10.5, 50, '2024-04-15', 'Approved');
 
 -- --------------------------------------------------------
 
@@ -253,12 +288,22 @@ INSERT INTO `schedules` (`id`, `time_in`, `time_out`) VALUES
 
 CREATE TABLE `shift_requests` (
   `id` int(11) NOT NULL,
-  `employee_id` int(11) NOT NULL,
+  `employee_id` varchar(15) NOT NULL,
   `requested_shift` varchar(50) NOT NULL,
   `request_date` date NOT NULL,
+  `time_from` time NOT NULL,
+  `time_to` time NOT NULL,
   `status` enum('Pending','Approved','Rejected') NOT NULL DEFAULT 'Pending',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `shift_requests`
+--
+
+INSERT INTO `shift_requests` (`id`, `employee_id`, `requested_shift`, `request_date`, `time_from`, `time_to`, `status`, `created_at`) VALUES
+(30, '2020-01431', 'Afternoon', '2024-05-08', '04:58:00', '03:02:00', 'Approved', '2024-04-10 03:18:34'),
+(31, 'MYC690542781', 'Evening', '2024-04-30', '02:01:00', '04:01:00', 'Rejected', '2024-04-10 03:22:47');
 
 --
 -- Indexes for dumped tables
@@ -295,6 +340,12 @@ ALTER TABLE `employees`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `leave_requests`
+--
+ALTER TABLE `leave_requests`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `overtime`
 --
 ALTER TABLE `overtime`
@@ -316,7 +367,7 @@ ALTER TABLE `schedules`
 -- Indexes for table `shift_requests`
 --
 ALTER TABLE `shift_requests`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -332,7 +383,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=179;
 
 --
 -- AUTO_INCREMENT for table `cashadvance`
@@ -350,13 +401,19 @@ ALTER TABLE `deductions`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `leave_requests`
+--
+ALTER TABLE `leave_requests`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `overtime`
 --
 ALTER TABLE `overtime`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `position`
@@ -374,16 +431,8 @@ ALTER TABLE `schedules`
 -- AUTO_INCREMENT for table `shift_requests`
 --
 ALTER TABLE `shift_requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `shift_requests`
---
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
