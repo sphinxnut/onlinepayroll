@@ -55,6 +55,13 @@ include "./admin/employee.php";
               </div>
             </div>
             <div class="form-group">
+              <label for="email" class="col-sm-3 control-label">Email</label>
+
+              <div class="col-sm-9">
+                <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+            </div>
+            <div class="form-group">
               <label for="address" class="col-sm-3 control-label">Address</label>
 
               <div class="col-sm-9">

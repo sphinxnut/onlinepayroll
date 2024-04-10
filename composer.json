@@ -1,5 +1,6 @@
 {
     "require": {
-        "bacon/bacon-qr-code": "^2.0"
+        "bacon/bacon-qr-code": "^2.0",
+        "vlucas/phpdotenv": "^5.6"
     }
 }

@@ -5,6 +5,7 @@ if (isset($_POST['add'])) {
 	$username = $_POST['username'];
 	$firstname = $_POST['firstname'];
 	$lastname = $_POST['lastname'];
+	$email = $_POST['email'];
 	$address = $_POST['address'];
 	$birthdate = $_POST['birthdate'];
 	$contact = $_POST['contact'];
@@ -27,7 +28,7 @@ if (isset($_POST['add'])) {
 	}
 	$employee_id = substr(str_shuffle($letters), 0, 3) . substr(str_shuffle($numbers), 0, 9);
 	//
-	$sql = "INSERT INTO employees (employee_id, username, firstname, lastname, address, birthdate, contact_info, gender, position_id, schedule_id, photo,password,  created_on) VALUES ('$employee_id', '$username', '$firstname', '$lastname', '$address', '$birthdate', '$contact', '$gender', '$position', '$schedule', '$filename','$password',  NOW())";
+	$sql = "INSERT INTO employees (employee_id, username, firstname, lastname, email, address, birthdate, contact_info, gender, position_id, schedule_id, photo,password,  created_on) VALUES ('$employee_id', '$username', '$firstname', '$lastname','$email', '$address', '$birthdate', '$contact', '$gender', '$position', '$schedule', '$filename','$password',  NOW())";
 	if ($conn->query($sql)) {
 		$_SESSION['success'] = 'Employee added successfully';
 	} else {

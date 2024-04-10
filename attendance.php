@@ -36,6 +36,12 @@ if (isset($_POST['employee'])) {
 				$sql = "INSERT INTO attendance (employee_id, date, time_in, status) VALUES ('$id', '$date_now', NOW(), '$logstatus')";
 				if ($conn->query($sql)) {
 					$output['message'] = 'Time in: ' . $row['firstname'] . ' ' . $row['lastname'];
+
+					$timeNow = date('F j, Y g:i A', strtotime("now"));
+
+					$message = 'Cafe Cerveza Employee: ' . $row['firstname'] . ' ' . $row['lastname'] . ' has timed in at ' . $timeNow;
+
+					sendSMSNotification($row['contact_info'], $message);
 				} else {
 					$output['error'] = true;
 					$output['message'] = $conn->error;
@@ -57,6 +63,13 @@ if (isset($_POST['employee'])) {
 					$sql = "UPDATE attendance SET time_out = NOW() WHERE id = '" . $row['uid'] . "'";
 					if ($conn->query($sql)) {
 						$output['message'] = 'Time out: ' . $row['firstname'] . ' ' . $row['lastname'];
+
+						$timeNow = date('F j, Y g:i A', strtotime("now"));
+
+						$message = 'Cafe Cerveza Employee: ' . $row['firstname'] . ' ' . $row['lastname'] . ' has timed out at ' . $timeNow;
+
+						sendSMSNotification($row['contact_info'], $message);
+
 
 						$sql = "SELECT * FROM attendance WHERE id = '" . $row['uid'] . "'";
 						$query = $conn->query($sql);
@@ -104,3 +117,22 @@ if (isset($_POST['employee'])) {
 }
 
 echo json_encode($output);
+function sendSMSNotification($phoneNumber, $message)
+{
+
+	$ch = curl_init();
+	$parameters = array(
+		'apikey' => 'c367070b9d6d34f8ead34a036a9187e6',
+		'number' => $phoneNumber,
+		'message' => $message,
+		'sendername' => 'SEMAPHORE'
+	);
+	curl_setopt($ch, CURLOPT_URL, 'https://semaphore.co/api/v4/messages');
+	curl_setopt($ch, CURLOPT_POST, 1);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($parameters));
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	$output = curl_exec($ch);
+	curl_close($ch);
+
+	// You can handle the response or log it if needed
+}

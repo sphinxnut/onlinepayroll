@@ -1,5 +1,10 @@
 <?php include 'includes/session.php'; ?>
 <?php include 'includes/header.php'; ?>
+<style>
+    .btn-group form {
+        display: inline-block;
+    }
+</style>
 
 <body class="hold-transition skin-black sidebar-mini">
     <div class="wrapper">
@@ -77,13 +82,23 @@
                                                 echo "<td>" . $row['firstname'] . ' ' . $row['lastname'] . "</td>";
                                                 echo "<td>" . $row["leave_date"] . "</td>";
                                                 echo "<td>" . $row["reason"] . "</td>";
-
                                                 echo "<td>" . $row["status"] . "</td>";
                                                 echo "<td>";
 
                                                 if ($row["status"] === 'Pending') {
-                                                    echo "<button class='btn btn-success' onclick='approveRequest(" . $row["id"] . ")'>Approve</button>";
-                                                    echo "<button class='btn btn-danger' onclick='cancelRequest(" . $row["id"] . ")'>Cancel</button>";
+                                                    echo "<div class='btn-group'>";
+                                                    echo "<form action='update_leave_status.php' method='post'>";
+                                                    echo "<input type='hidden' name='id' value='" . $row["id"] . "'>";
+                                                    echo "<input type='hidden' name='status' value='Approved'>";
+                                                    echo "<button type='submit' class='btn btn-success'>Approve</button>";
+                                                    echo "</form>";
+
+                                                    echo "<form action='update_leave_status.php' method='post'>";
+                                                    echo "<input type='hidden' name='id' value='" . $row["id"] . "'>";
+                                                    echo "<input type='hidden' name='status' value='Rejected'>";
+                                                    echo "<button type='submit' class='btn btn-danger'>Cancel</button>";
+                                                    echo "</form>";
+                                                    echo "</div>";
                                                 } else {
                                                     echo "Completed";
                                                 }
@@ -108,7 +123,7 @@
     <?php include 'includes/scripts.php'; ?>
 
     <script>
-        function approveRequest(id) {
+        /*     function approveRequest(id) {
             // Send AJAX request to update the status to 'Approved'
             $.ajax({
                 type: 'POST',
@@ -138,6 +153,17 @@
                     location.reload();
                 }
             });
+        } */
+
+        function approveRequest(id) {
+            document.getElementById('approveId').value = id;
+            document.getElementById('approveForm').submit();
+        }
+
+        // JavaScript function to set ID and submit form for cancellation
+        function cancelRequest(id) {
+            document.getElementById('cancelId').value = id;
+            document.getElementById('cancelForm').submit();
         }
     </script>
 </body>

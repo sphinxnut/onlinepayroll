@@ -18,18 +18,19 @@
         $mail->isSMTP();                                            //Send using SMTP
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'arzeljrz17@gmail.com';                     //SMTP username
-        $mail->Password   = 'rffsqyrbbhygwnco';                               //SMTP password
+        $mail->Username   = 'ojt.rms.group.4@gmail.com';                     //SMTP username
+        $mail->Password   = 'hbpezpowjedwoctl';                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
         //Recipients
-        $mail->setFrom('arzeljrz@gmail.com', 'Arzel John Zolina');
+        $mail->setFrom('ojt.rms.group.4@gmail.com', 'Cafe Cerveza Admin');
         $mail->addAddress('cypheruhrzel@gmail.com', 'cypheruhrzel ');
-        $mail->addAddress('lastimosoarnie@gmail.com', 'Arnie Lastimoso');
-        $mail->addAddress('renzrajahbuayan@gmail.com', 'Hamdawe Esmael');
+        /*   $mail->addAddress('lastimosoarnie@gmail.com', 'Arnie Lastimoso'); */
+        /*     $mail->addAddress('renzrajahbuayan@gmail.com', 'Hamdawe Esmael'); */
         $mail->addAddress('montanomarjorie9@gmail.com', 'Marjorie Montaño');
-        $mail->addAddress('ar.ar.rivamonte.10@gmail.com', 'Ariel Nalagon Rivamonte');
+        $mail->addAddress('tengsacandal@gmail.com', 'Sulayman Sacandal');
+        /*   $mail->addAddress('ar.ar.rivamonte.10@gmail.com', 'Ariel Nalagon Rivamonte'); */
         $mail->addAddress('pingoyzyra123@gmail.com', 'Zyra Pingoy');
         $mail->addAddress('jorefmarzon28@gmail.com', 'Jorefe Dagangon Marzon');
 

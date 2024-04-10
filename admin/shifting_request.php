@@ -1,5 +1,10 @@
 <?php include 'includes/session.php'; ?>
 <?php include 'includes/header.php'; ?>
+<style>
+    .btn-group form {
+        display: inline-block;
+    }
+</style>
 
 <body class="hold-transition skin-black sidebar-mini">
     <div class="wrapper">
@@ -55,6 +60,7 @@
                                     <thead>
                                         <tr>
                                             <th>Employee ID</th>
+                                            <th>Full Name</th>
                                             <th>Requested Shift</th>
                                             <th>Request Date</th>
                                             <th>Time From</th>
@@ -67,12 +73,15 @@
                                         <?php
                                         // Fetch data from the database and populate the table
                                         // Modify this part according to your database schema and data retrieval logic
-                                        $sql = "SELECT * FROM shift_requests";
+                                        $sql = "SELECT shift_requests.*, employees.firstname, employees.lastname 
+        FROM shift_requests 
+        LEFT JOIN employees ON shift_requests.employee_id = employees.employee_id ";
                                         $result = $conn->query($sql);
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo "<tr>";
                                                 echo "<td>" . $row["employee_id"] . "</td>";
+                                                echo "<td>" . $row['firstname'] . ' ' . $row['lastname'] . "</td>";
                                                 echo "<td>" . $row["requested_shift"] . "</td>";
                                                 echo "<td>" . $row["request_date"] . "</td>";
                                                 echo "<td>" . $row["time_from"] . "</td>";
@@ -81,8 +90,19 @@
                                                 echo "<td>";
 
                                                 if ($row["status"] === 'Pending') {
-                                                    echo "<button class='btn btn-success' onclick='approveRequest(" . $row["id"] . ")'>Approve</button>";
-                                                    echo "<button class='btn btn-danger' onclick='cancelRequest(" . $row["id"] . ")'>Cancel</button>";
+                                                    echo "<div class='btn-group'>";
+                                                    echo "<form action='update_shifting_status.php' method='post'>";
+                                                    echo "<input type='hidden' name='id' value='" . $row["id"] . "'>";
+                                                    echo "<input type='hidden' name='status' value='Approved'>";
+                                                    echo "<button type='submit' class='btn btn-success'>Approve</button>";
+                                                    echo "</form>";
+
+                                                    echo "<form action='update_shifting_status.php' method='post'>";
+                                                    echo "<input type='hidden' name='id' value='" . $row["id"] . "'>";
+                                                    echo "<input type='hidden' name='status' value='Rejected'>";
+                                                    echo "<button type='submit' class='btn btn-danger'>Cancel</button>";
+                                                    echo "</form>";
+                                                    echo "</div>";
                                                 } else {
                                                     echo "Completed";
                                                 }
@@ -107,7 +127,7 @@
     <?php include 'includes/scripts.php'; ?>
 
     <script>
-        function approveRequest(id) {
+        /*      function approveRequest(id) {
             // Send AJAX request to update the status to 'Approved'
             $.ajax({
                 type: 'POST',
@@ -137,6 +157,18 @@
                     location.reload();
                 }
             });
+        } */
+
+
+        function approveRequest(id) {
+            document.getElementById('approveId').value = id;
+            document.getElementById('approveForm').submit();
+        }
+
+        // JavaScript function to set ID and submit form for cancellation
+        function cancelRequest(id) {
+            document.getElementById('cancelId').value = id;
+            document.getElementById('cancelForm').submit();
         }
     </script>
 </body>
