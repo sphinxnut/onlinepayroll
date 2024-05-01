@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 10, 2024 at 06:57 AM
+-- Generation Time: May 01, 2024 at 03:57 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -102,8 +102,9 @@ INSERT INTO `attendance` (`id`, `employee_id`, `date`, `time_in`, `status`, `tim
 (146, 7, '2024-03-16', '09:00:00', 1, '17:00:00', 8),
 (147, 7, '2024-03-17', '09:00:00', 1, '17:00:00', 8),
 (148, 7, '2024-03-18', '09:00:00', 1, '17:00:00', 8),
-(169, 12, '2024-04-10', '12:10:52', 0, '12:11:12', 8),
-(178, 6, '2024-04-10', '12:41:00', 0, '12:41:33', 8);
+(169, 12, '2024-04-10', '12:10:52', 1, '12:11:12', 8),
+(178, 6, '2024-04-10', '12:41:00', 1, '12:41:33', 8),
+(183, 12, '2024-04-11', '22:22:07', 1, '22:22:49', 14);
 
 -- --------------------------------------------------------
 
@@ -180,9 +181,9 @@ INSERT INTO `employees` (`id`, `employee_id`, `username`, `firstname`, `lastname
 (6, 'MYC690542781', '', 'Zyra', 'Pinggoy', 'ajmixrhyme@gmail.com', 'Surallah South Cotabato', '2000-10-17', '9154138624', 'Male', 2, 1, 'zyra.jpg', '2022-10-20', 'sasasa', ''),
 (7, 'DIR671295830', '', 'Marjorie', 'Montano', '', 'Surallah South Cotabato', '2001-08-08', '9154184895', 'Female', 4, 2, 'marjorie.jpg', '2022-10-20', '', ''),
 (8, 'HNO248137905', '', 'Arnie', 'Lastimoso', '', 'Tupi South Cotabato', '2002-05-09', '9048548497', 'Female', 5, 1, 'arnie.png', '2022-10-20', '', ''),
-(9, 'ZQJ783540162', '', 'Ariel', 'Rivamonte', '', 'Polomolok South Cotabato', '2000-10-03', '945215487', 'Male', 1, 2, 'ariel.jpg', '2022-10-20', '', ''),
+(9, 'ZQJ783540162', '', 'Ariel', 'Rivamonte', '', 'Polomolok South Cotabato', '2000-10-03', '945215487', 'Male', 1, 3, 'ariel.jpg', '2022-10-20', '', ''),
 (11, 'TVB982604137', '123', 'test', 'test', '', 'polomolok', '2001-03-26', '921218721', 'Male', 2, 1, 'pia.png', '2024-03-13', 'ssassa', '123'),
-(12, '2020-01431', 'arzeljrz', 'Arzel John', 'Zolina', 'Arzeljrz17@gmail.com', 'polomolok', '2024-04-23', '9090937257', 'Male', 1, 2, 'cobol.png', '2024-04-10', 'uwuuuuuuuuuuuuu dugay sweldo', '123');
+(12, '2020-01431', 'arzeljrz', 'Arzel John', 'Zolina', 'Arzeljrz17@gmail.com', 'polomolok', '2024-04-23', '9090937257', 'Male', 1, 7, 'cobol.png', '2024-04-10', 'uwuuuuuuuuuuuuu dugay sweldo', '123');
 
 -- --------------------------------------------------------
 
@@ -194,7 +195,8 @@ CREATE TABLE `leave_requests` (
   `id` int(11) NOT NULL,
   `employee_id` varchar(15) NOT NULL,
   `reason` varchar(50) NOT NULL,
-  `leave_date` date NOT NULL,
+  `leave_date_from` date NOT NULL,
+  `leave_date_to` date NOT NULL,
   `status` enum('Pending','Approved','Rejected') NOT NULL DEFAULT 'Pending',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -203,9 +205,10 @@ CREATE TABLE `leave_requests` (
 -- Dumping data for table `leave_requests`
 --
 
-INSERT INTO `leave_requests` (`id`, `employee_id`, `reason`, `leave_date`, `status`, `created_at`) VALUES
-(1, '2020-01431', 'ako ay gutom', '2024-05-02', 'Rejected', '2024-04-10 03:19:48'),
-(2, 'MYC690542781', 'ako ay', '2024-05-01', 'Approved', '2024-04-10 03:20:50');
+INSERT INTO `leave_requests` (`id`, `employee_id`, `reason`, `leave_date_from`, `leave_date_to`, `status`, `created_at`) VALUES
+(1, '2020-01431', 'ako ay gutom', '2024-05-02', '0000-00-00', 'Rejected', '2024-04-10 03:19:48'),
+(2, 'MYC690542781', 'ako ay', '2024-05-01', '0000-00-00', 'Approved', '2024-04-10 03:20:50'),
+(3, '2020-01431', 'Other', '2024-05-20', '2024-05-30', 'Approved', '2024-05-01 01:30:35');
 
 -- --------------------------------------------------------
 
@@ -274,7 +277,8 @@ INSERT INTO `schedules` (`id`, `time_in`, `time_out`) VALUES
 (1, '07:00:00', '16:00:00'),
 (2, '08:00:00', '17:00:00'),
 (3, '09:00:00', '18:00:00'),
-(4, '10:00:00', '19:00:00');
+(4, '10:00:00', '19:00:00'),
+(7, '23:00:00', '08:00:00');
 
 -- --------------------------------------------------------
 
@@ -379,7 +383,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=179;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=184;
 
 --
 -- AUTO_INCREMENT for table `cashadvance`
@@ -403,7 +407,7 @@ ALTER TABLE `employees`
 -- AUTO_INCREMENT for table `leave_requests`
 --
 ALTER TABLE `leave_requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `overtime`
@@ -421,7 +425,7 @@ ALTER TABLE `position`
 -- AUTO_INCREMENT for table `schedules`
 --
 ALTER TABLE `schedules`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `shift_requests`

@@ -92,7 +92,7 @@
         </div>
 
       </section>
-      s
+
     </div>
 
     <?php include 'includes/footer.php'; ?>

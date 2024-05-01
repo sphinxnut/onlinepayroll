@@ -61,7 +61,8 @@
                                         <tr>
                                             <th>Employee ID</th>
                                             <th>Name</th>
-                                            <th>Leave Request Date</th>
+                                            <th>Leave Date From</th>
+                                            <th>Leave Date To</th>
                                             <th> Reason</th>
                                             <th>Status</th>
                                             <th>Action</th>
@@ -80,7 +81,8 @@
                                                 echo "<tr>";
                                                 echo "<td>" . $row["employee_id"] . "</td>";
                                                 echo "<td>" . $row['firstname'] . ' ' . $row['lastname'] . "</td>";
-                                                echo "<td>" . $row["leave_date"] . "</td>";
+                                                echo "<td>" . $row["leave_date_from"] . "</td>";
+                                                echo "<td>" . $row["leave_date_to"] . "</td>";
                                                 echo "<td>" . $row["reason"] . "</td>";
                                                 echo "<td>" . $row["status"] . "</td>";
                                                 echo "<td>";

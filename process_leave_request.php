@@ -8,11 +8,12 @@
         // Retrieve data from the form
         $employeeId = $_POST['employee_id'];
         $reason = $_POST['reason'];
-        $leaveDate = $_POST['leaveDate'];
+        $leaveDateFrom = $_POST['leaveDateFrom'];
+        $leaveDateTo = $_POST['leaveDateTo'];
 
 
         // Insert the shifting request into the database
-        $sql = "INSERT INTO leave_requests (employee_id, reason, leave_date) VALUES ('$employeeId', '$reason', '$leaveDate')";
+        $sql = "INSERT INTO leave_requests (employee_id, reason, leave_date_from, leave_date_to) VALUES ('$employeeId', '$reason', '$leaveDateFrom', '$leaveDateTo')";
 
         if ($conn->query($sql) === TRUE) {
             // Shifting request successfully submitted

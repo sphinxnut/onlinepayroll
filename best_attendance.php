@@ -31,6 +31,7 @@
             background-color: #141414 !important;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             font-weight: 400;
+            border-color: white !important;
         }
 
         .btn:hover {
@@ -64,9 +65,18 @@
                 <?php
 
                 include 'conn.php';
-                function generateTrophyURL()
+
+                function generateTrophyURL1()
                 {
-                    return "https://github-profile-trophy.vercel.app/?username=ryo-ma&theme=onedark&title=Stars";
+                    return "https://github-profile-trophy.vercel.app/?username=uhrzel&title=Stars";
+                }
+                function generateTrophyURL2()
+                {
+                    return "https://github-profile-trophy.vercel.app/?username=reydelshit&title=Stars";
+                }
+                function generateTrophyURL3()
+                {
+                    return "https://github-profile-trophy.vercel.app/?username=aynjel&title=Stars";
                 }
 
                 $sql = "SELECT 
@@ -101,12 +111,14 @@
 
 
                         if ($rank === 1) {
-                            $trophyURL = generateTrophyURL($row["attendance_count"]);
-                            echo '<td><div style="width:100%;height:0;padding-bottom:56%;position:relative;"><img src="' . $trophyURL . '" style="position:absolute"></img></div></td>';
+                            $trophyURL1 = generateTrophyURL1($row["attendance_count"]);
+                            $trophyURL2 = generateTrophyURL2($row["attendance_count"]);
+                            $trophyURL3 = generateTrophyURL3($row["attendance_count"]);
+                            echo '<td><div style="width:100%;height:0;padding-bottom:56%;position:relative;"><img src="' . $trophyURL1 . '" style="position:absolute"></img></div></td>';
                         } else if ($rank === 2) {
-                            echo '<td><div style="width:100%;height:0;padding-bottom:56%;position:relative;"><img src="' . $trophyURL . '" style="position:absolute"></img></div></td>';
+                            echo '<td><div style="width:100%;height:0;padding-bottom:56%;position:relative;"><img src="' . $trophyURL2 . '" style="position:absolute"></img></div></td>';
                         } else if ($rank === 3) {
-                            echo '<td><div style="width:100%;height:0;padding-bottom:56%;position:relative;"><img src="' . $trophyURL . '" style="position:absolute"></img></div></td>';
+                            echo '<td><div style="width:100%;height:0;padding-bottom:56%;position:relative;"><img src="' . $trophyURL3 . '" style="position:absolute"></img></div></td>';
                         } else {
                             echo '<td></td>';
                         }

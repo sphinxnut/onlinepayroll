@@ -51,19 +51,44 @@ include 'header.php';
                         </h4>
                         <form method="post" action="process_leave_request.php">
                             <input type="hidden" name="employee_id" value="<?php echo $employeeId; ?>">
-                            <div class=" form-group">
+                            <div class="form-group">
                                 <label for="reason">Reason:</label>
-                                <input type="text" id="reason" name="reason" class="form-control" required>
+                                <select id="reason" name="reason" class="form-control" required onchange="handleReasonChange(this.value)">
+                                    <option value="">Select reason...</option>
+                                    <option value="Vacation">Vacation</option>
+                                    <option value="Sick Leave">Sick Leave</option>
+                                    <option value="Personal Reasons">Personal Reasons</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group" id="otherReasonInput" style="display: none;">
+                                <label for="otherReason">Other Reason:</label>
+                                <input type="text" id="otherReason" name="otherReason" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="leaveDate">Date:</label>
-                                <input type="text" id="leaveDate" name="leaveDate" class="form-control" autocomplete="off">
+                                <label for="leaveDateFrom">Date From:</label>
+                                <input type="text" id="leaveDateFrom" name="leaveDateFrom" class="form-control" autocomplete="off">
+                            </div>
+                            <div class="form-group">
+                                <label for="leaveDateTo">Date To:</label>
+                                <input type="text" id="leaveDateTo" name="leaveDateTo" class="form-control" autocomplete="off">
                             </div>
 
                             <button type="submit" class="btn btn-primary btn-block">Submit Leave</button>
                             <a href="index.php" class="btn btn-primary btn-block">Back</a>
-
                         </form>
+
+                        <script>
+                            function handleReasonChange(selectedValue) {
+                                var otherReasonInput = document.getElementById("otherReasonInput");
+                                if (selectedValue === "Other") {
+                                    otherReasonInput.style.display = "block";
+                                } else {
+                                    otherReasonInput.style.display = "none";
+                                }
+                            }
+                        </script>
+
                     </div>
                 </div>
                 <!-- SUCCESS ALERT -->
@@ -85,7 +110,11 @@ include 'header.php';
     <script>
         $(document).ready(function() {
 
-            $('#leaveDate').datepicker({
+            $('#leaveDateFrom').datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true
+            });
+            $('#leaveDateTo').datepicker({
                 format: 'yyyy-mm-dd',
                 autoclose: true
             });
