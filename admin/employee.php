@@ -121,8 +121,31 @@
         var id = $(this).data('id');
         getRow(id);
       });
+      $(".Generate").click(function(e) {
+        e.preventDefault();
+        $("#Generate").modal("show");
+        var id = $(this).data("id");
+        getRow(id);
+
+        function generate(user_input) {
+          document.querySelector(".qr-code").style = "";
+
+          var qrcode = new QRCode(document.querySelector(".qr-code"), {
+            text: `${user_input.value}`,
+            width: 180, //128
+            height: 180,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H,
+          });
+          console.log(qrcode);
+          let id = $("employee_id").val();
+          generate(id);
+        }
+      });
 
     });
+
 
     function getRow(id) {
       $.ajax({
@@ -146,15 +169,12 @@
           $('#gender_val').val(response.gender).html(response.gender);
           $('#position_val').val(response.position_id).html(response.description);
           $('#schedule_val').val(response.schedule_id).html(response.time_in + ' - ' + response.time_out);
-          $('.codeimg').attr('src', 'https://chart.googleapis.com/chart?cht=qr&chl=' + response.employee_id + '&choe=UTF-8&chs=500x500');
-
+          $('.codeimg').attr('src', 'https://quickchart.io/qr?text=' + response.employee_id + '&size=200');
 
         }
       });
     }
   </script>
 </body>
-<script src="./employee_genQR.js"></script>
-
 
 </html>

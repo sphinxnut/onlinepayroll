@@ -1,6 +1,3 @@
-<?php
-include "./admin/employee.php";
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -145,6 +142,7 @@ include "./admin/employee.php";
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
               <button type="submit" class="btn btn-primary btn-flat" name="add"><i class="fa fa-save"></i> Save</button>
+            </div>
           </form>
         </div>
       </div>
